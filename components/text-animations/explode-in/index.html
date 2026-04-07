@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explode In</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+        }
+        .text span {
+            display: inline-block;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var text = el.textContent;
+        el.innerHTML = '';
+        var initials = [];
+        for (var i = 0; i < text.length; i++) {
+            var span = document.createElement('span');
+            span.textContent = text[i] === ' ' ? '\u00a0' : text[i];
+            var tx = (Math.random() - 0.5) * 300;
+            var ty = (Math.random() - 0.5) * 200;
+            var rot = (Math.random() - 0.5) * 360;
+            var sc = Math.random() * 1.5 + 0.5;
+            initials.push({ tx: tx, ty: ty, rot: rot, sc: sc });
+            span.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) rotate(' + rot + 'deg) scale(' + sc + ')';
+            span.style.opacity = '0';
+            el.appendChild(span);
+        }
+        var spans = el.querySelectorAll('span');
+
+        function animate() {
+            spans.forEach(function(s, i) {
+                s.style.transform = 'translate(' + initials[i].tx + 'px, ' + initials[i].ty + 'px) rotate(' + initials[i].rot + 'deg) scale(' + initials[i].sc + ')';
+                s.style.opacity = '0';
+            });
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    spans.forEach(function(s, i) {
+                        setTimeout(function() {
+                            s.style.transform = 'translate(0, 0) rotate(0deg) scale(1)';
+                            s.style.opacity = '1';
+                        }, i * 50);
+                    });
+                });
+            });
+        }
+
+        animate();
+        setInterval(function() {
+            animate();
+        }, 4000);
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Scale</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+        }
+        .text span {
+            display: inline-block;
+            animation: scale 2s ease-in-out infinite;
+        }
+        @keyframes scale {
+            0%, 20%, 100% { transform: scale(1); }
+            10% { transform: scale(1.3); }
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var text = el.textContent;
+        el.innerHTML = '';
+        for (var i = 0; i < text.length; i++) {
+            var span = document.createElement('span');
+            span.textContent = text[i] === ' ' ? '\u00a0' : text[i];
+            span.style.animationDelay = (i * 0.08) + 's';
+            el.appendChild(span);
+        }
+    })();
+    </script>
+</body>
+</html>

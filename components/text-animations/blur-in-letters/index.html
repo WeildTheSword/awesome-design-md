@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blur In Letters</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+        }
+        .text span {
+            display: inline-block;
+            filter: blur(8px);
+            opacity: 0;
+            transition: filter 0.4s ease, opacity 0.4s ease;
+        }
+        .text span.visible {
+            filter: blur(0px);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var text = el.textContent;
+        el.innerHTML = '';
+        for (var i = 0; i < text.length; i++) {
+            var span = document.createElement('span');
+            span.textContent = text[i] === ' ' ? '\u00a0' : text[i];
+            el.appendChild(span);
+        }
+        var spans = el.querySelectorAll('span');
+
+        function animate() {
+            spans.forEach(function(s) {
+                s.classList.remove('visible');
+            });
+            spans.forEach(function(s, i) {
+                setTimeout(function() {
+                    s.classList.add('visible');
+                }, i * 120);
+            });
+        }
+
+        animate();
+        setInterval(function() {
+            animate();
+        }, 4000);
+    })();
+    </script>
+</body>
+</html>

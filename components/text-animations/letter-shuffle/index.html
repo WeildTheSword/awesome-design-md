@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter Shuffle</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .text {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: #e2e8f0;
+    }
+
+    .text span {
+      display: inline-block;
+      transition: transform 0.8s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="text">Your text here</div>
+  <script>
+    (function () {
+      var container = document.querySelector('.text');
+      var original = 'Your text here';
+      var spans;
+
+      function buildSpans() {
+        container.innerHTML = '';
+        spans = [];
+        for (var i = 0; i < original.length; i++) {
+          var span = document.createElement('span');
+          span.textContent = original[i] === ' ' ? '\u00a0' : original[i];
+          container.appendChild(span);
+          spans.push(span);
+        }
+      }
+
+      function scatter() {
+        for (var i = 0; i < spans.length; i++) {
+          var x = (Math.random() - 0.5) * 600;
+          var y = (Math.random() - 0.5) * 400;
+          var r = (Math.random() - 0.5) * 360;
+          spans[i].style.transition = 'none';
+          spans[i].style.transform = 'translateX(' + x + 'px) translateY(' + y + 'px) rotate(' + r + 'deg)';
+          spans[i].style.opacity = '0';
+        }
+      }
+
+      function gather() {
+        for (var i = 0; i < spans.length; i++) {
+          spans[i].style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+          spans[i].style.transform = 'none';
+          spans[i].style.opacity = '1';
+        }
+      }
+
+      function play() {
+        buildSpans();
+        scatter();
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            gather();
+          });
+        });
+      }
+
+      play();
+      setInterval(play, 4000);
+    })();
+  </script>
+</body>
+</html>

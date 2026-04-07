@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Morph</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+            transition: opacity 0.5s ease, filter 0.5s ease;
+        }
+        .text.blur {
+            opacity: 0;
+            filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var phrases = ['Your text here', 'Make it count', 'Dream bigger'];
+        var index = 0;
+
+        function morph() {
+            el.classList.add('blur');
+            setTimeout(function() {
+                index = (index + 1) % phrases.length;
+                el.textContent = phrases[index];
+                el.classList.remove('blur');
+            }, 500);
+        }
+
+        setInterval(morph, 3000);
+    })();
+    </script>
+</body>
+</html>

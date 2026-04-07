@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromatic Split</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .text::before,
+        .text::after {
+            content: 'Your text here';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+        .text::before {
+            color: #0ff;
+            animation: chromatic-cyan 3s ease-in-out infinite alternate;
+        }
+        .text::after {
+            color: #f00;
+            animation: chromatic-red 3s ease-in-out infinite alternate;
+        }
+        @keyframes chromatic-cyan {
+            0% { transform: translate(-1.5px, 0.5px); }
+            50% { transform: translate(1px, -1px); }
+            100% { transform: translate(-0.5px, 1.5px); }
+        }
+        @keyframes chromatic-red {
+            0% { transform: translate(1.5px, -0.5px); }
+            50% { transform: translate(-1px, 1px); }
+            100% { transform: translate(0.5px, -1.5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+</body>
+</html>

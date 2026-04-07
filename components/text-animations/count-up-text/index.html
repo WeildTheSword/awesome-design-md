@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Count Up Text</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .text {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: #e2e8f0;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <div class="text"></div>
+  <script>
+    (function () {
+      var container = document.querySelector('.text');
+      var target = 'Your text here';
+      var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var resolved = [];
+      var timers = [];
+
+      function play() {
+        for (var t = 0; t < timers.length; t++) {
+          clearInterval(timers[t]);
+        }
+        timers = [];
+        resolved = new Array(target.length);
+        for (var i = 0; i < target.length; i++) {
+          resolved[i] = false;
+        }
+
+        for (var i = 0; i < target.length; i++) {
+          (function (index) {
+            var resolveTime = 50 * index;
+            var interval = setInterval(function () {
+              render();
+            }, 30);
+            timers.push(interval);
+
+            setTimeout(function () {
+              clearInterval(interval);
+              resolved[index] = true;
+              render();
+            }, resolveTime + 300);
+          })(i);
+        }
+
+        render();
+      }
+
+      function render() {
+        var output = '';
+        for (var i = 0; i < target.length; i++) {
+          if (resolved[i]) {
+            output += target[i];
+          } else if (target[i] === ' ') {
+            output += ' ';
+          } else {
+            output += chars[Math.floor(Math.random() * chars.length)];
+          }
+        }
+        container.textContent = output;
+      }
+
+      play();
+      setInterval(play, 4000);
+    })();
+  </script>
+</body>
+</html>

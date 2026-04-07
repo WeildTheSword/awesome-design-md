@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+        }
+        .char-slot {
+            display: inline-block;
+            overflow: hidden;
+            height: 1.2em;
+            line-height: 1.2em;
+        }
+        .char-reel {
+            transition: transform 0.3s ease-out;
+        }
+        .char-reel div {
+            height: 1.2em;
+            line-height: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="text"></div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var text = 'Your text here';
+        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
+        var reelCount = 12;
+        var slots = [];
+
+        for (var i = 0; i < text.length; i++) {
+            var slot = document.createElement('div');
+            slot.className = 'char-slot';
+            var reel = document.createElement('div');
+            reel.className = 'char-reel';
+            for (var j = 0; j < reelCount; j++) {
+                var d = document.createElement('div');
+                d.textContent = chars[Math.floor(Math.random() * chars.length)];
+                reel.appendChild(d);
+            }
+            var final = document.createElement('div');
+            final.textContent = text[i] === ' ' ? '\u00a0' : text[i];
+            reel.appendChild(final);
+            slot.appendChild(reel);
+            el.appendChild(slot);
+            slots.push(reel);
+        }
+
+        function animate() {
+            slots.forEach(function(reel, i) {
+                reel.style.transition = 'none';
+                reel.style.transform = 'translateY(0)';
+                var children = reel.querySelectorAll('div');
+                for (var j = 0; j < children.length - 1; j++) {
+                    children[j].textContent = chars[Math.floor(Math.random() * chars.length)];
+                }
+            });
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    slots.forEach(function(reel, i) {
+                        var delay = i * 150 + Math.random() * 100;
+                        setTimeout(function() {
+                            reel.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                            reel.style.transform = 'translateY(-' + (reelCount * 1.2) + 'em)';
+                        }, delay);
+                    });
+                });
+            });
+        }
+
+        animate();
+        setInterval(function() {
+            animate();
+        }, 5000);
+    })();
+    </script>
+</body>
+</html>

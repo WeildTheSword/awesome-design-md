@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll In</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+        }
+        .text span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-20px) rotate(-120deg);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+        }
+        .text span.visible {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var text = el.textContent;
+        el.innerHTML = '';
+        for (var i = 0; i < text.length; i++) {
+            var span = document.createElement('span');
+            span.textContent = text[i] === ' ' ? '\u00a0' : text[i];
+            el.appendChild(span);
+        }
+        var spans = el.querySelectorAll('span');
+
+        function animate() {
+            spans.forEach(function(s) {
+                s.classList.remove('visible');
+            });
+            spans.forEach(function(s, i) {
+                setTimeout(function() {
+                    s.classList.add('visible');
+                }, i * 100);
+            });
+        }
+
+        animate();
+        setInterval(function() {
+            animate();
+        }, 4000);
+    })();
+    </script>
+</body>
+</html>

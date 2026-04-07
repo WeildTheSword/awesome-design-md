@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bounce In Letters</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .text {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: #e2e8f0;
+    }
+
+    .text span {
+      display: inline-block;
+      opacity: 0;
+      animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="text">Your text here</div>
+  <script>
+    (function () {
+      var container = document.querySelector('.text');
+      var original = 'Your text here';
+
+      function buildSpans() {
+        container.innerHTML = '';
+        for (var i = 0; i < original.length; i++) {
+          var span = document.createElement('span');
+          span.textContent = original[i] === ' ' ? '\u00a0' : original[i];
+          span.style.animationDelay = (i * 0.05) + 's';
+          container.appendChild(span);
+        }
+      }
+
+      function play() {
+        buildSpans();
+      }
+
+      play();
+      setInterval(play, 4000);
+    })();
+  </script>
+</body>
+</html>

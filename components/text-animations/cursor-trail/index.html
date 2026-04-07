@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Trail</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+        }
+        .text span {
+            opacity: 0;
+            transition: opacity 0.1s ease;
+        }
+        .text span.visible {
+            opacity: 1;
+        }
+        .text span.cursor {
+            color: #60a5fa;
+            text-shadow: 0 0 10px #60a5fa, 0 0 20px #3b82f6;
+        }
+        .text span.trail {
+            color: #93c5fd;
+            text-shadow: 0 0 6px #93c5fd;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var original = 'Your text here';
+        var spans = [];
+
+        function setup() {
+            el.innerHTML = '';
+            spans = [];
+            for (var i = 0; i < original.length; i++) {
+                var span = document.createElement('span');
+                span.textContent = original[i] === ' ' ? '\u00a0' : original[i];
+                el.appendChild(span);
+                spans.push(span);
+            }
+        }
+
+        function run() {
+            setup();
+            var pos = 0;
+            var interval = setInterval(function() {
+                if (pos > 0) {
+                    spans[pos - 1].classList.remove('cursor');
+                    spans[pos - 1].classList.add('trail');
+                }
+                if (pos > 2) {
+                    spans[pos - 3].classList.remove('trail');
+                }
+                if (pos >= original.length) {
+                    for (var j = 0; j < spans.length; j++) {
+                        spans[j].classList.remove('trail', 'cursor');
+                    }
+                    clearInterval(interval);
+                    return;
+                }
+                spans[pos].classList.add('visible', 'cursor');
+                pos++;
+            }, 100);
+        }
+
+        run();
+        setInterval(run, 4000);
+    })();
+    </script>
+</body>
+</html>

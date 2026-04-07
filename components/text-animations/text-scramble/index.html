@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Scramble</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="text" id="text">Your text here</div>
+    <script>
+        (function() {
+            var target = 'Your text here';
+            var symbols = '@#$%&*!';
+            var el = document.getElementById('text');
+            var frameRate = 30;
+            var resolveDelay = 3;
+
+            function scramble() {
+                var resolved = 0;
+                var frame = 0;
+                var output = target.split('').map(function() { return ''; });
+
+                function tick() {
+                    frame++;
+                    for (var i = 0; i < target.length; i++) {
+                        if (target[i] === ' ') {
+                            output[i] = ' ';
+                        } else if (frame > i * resolveDelay + resolveDelay) {
+                            output[i] = target[i];
+                        } else {
+                            output[i] = symbols[Math.floor(Math.random() * symbols.length)];
+                        }
+                    }
+                    el.textContent = output.join('');
+
+                    var allResolved = output.every(function(c, i) {
+                        return c === target[i];
+                    });
+
+                    if (!allResolved) {
+                        requestAnimationFrame(tick);
+                    }
+                }
+
+                tick();
+            }
+
+            scramble();
+            setInterval(scramble, 4000);
+        })();
+    </script>
+</body>
+</html>

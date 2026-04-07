@@ -1,0 +1,808 @@
+{
+  "version": "1.0.0",
+  "baseUrl": "https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/components",
+  "categories": [
+    {
+      "id": "text-animations",
+      "name": "Text Animations",
+      "icon": "T",
+      "description": "Typography effects: gradients, glitch, typewriter, morphing",
+      "subcategories": [
+        { "id": "fade-reveal", "name": "Fade & Reveal", "order": 1 },
+        { "id": "color-gradient", "name": "Color & Gradient", "order": 2 },
+        { "id": "distortion-glitch", "name": "Distortion & Glitch", "order": 3 },
+        { "id": "typing-character", "name": "Typing & Character", "order": 4 },
+        { "id": "motion-transform", "name": "Motion & Transform", "order": 5 },
+        { "id": "hover-interactive", "name": "Hover & Interactive", "order": 6 }
+      ]
+    },
+    {
+      "id": "backgrounds",
+      "name": "Background Effects",
+      "icon": "B",
+      "description": "Ambient canvas effects: particles, gradients, mesh, noise"
+    },
+    {
+      "id": "page-transitions",
+      "name": "Page Transitions",
+      "icon": "P",
+      "description": "Full-page enter/exit animations"
+    },
+    {
+      "id": "hover-effects",
+      "name": "Hover Effects",
+      "icon": "H",
+      "description": "Interactive cursor and hover responses"
+    },
+    {
+      "id": "loading-animations",
+      "name": "Loading Animations",
+      "icon": "L",
+      "description": "Spinners, skeletons, progress indicators"
+    },
+    {
+      "id": "scroll-effects",
+      "name": "Scroll Effects",
+      "icon": "S",
+      "description": "Scroll-triggered reveals, parallax, sticky transforms"
+    }
+  ],
+  "components": [
+    {
+      "key": "text-reveal-blur",
+      "name": "Text Reveal Blur",
+      "description": "Words fade in from blur with elegant staggered timing",
+      "category": "text-animations",
+      "subcategory": "fade-reveal",
+      "tags": ["blur", "reveal", "stagger", "elegant"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "fade-in-up",
+      "name": "Fade In Up",
+      "description": "Text fades in while sliding upward from below",
+      "category": "text-animations",
+      "subcategory": "fade-reveal",
+      "tags": ["fade", "slide", "entrance", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "fade-in-letters",
+      "name": "Fade In Letters",
+      "description": "Each letter fades in one by one with staggered delay",
+      "category": "text-animations",
+      "subcategory": "fade-reveal",
+      "tags": ["fade", "letters", "stagger", "elegant"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "clip-reveal",
+      "name": "Clip Reveal",
+      "description": "Text revealed by an animated clip-path wipe from left to right",
+      "category": "text-animations",
+      "subcategory": "fade-reveal",
+      "tags": ["clip-path", "reveal", "wipe", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "split-reveal",
+      "name": "Split Reveal",
+      "description": "Text splits from center, halves slide apart to reveal",
+      "category": "text-animations",
+      "subcategory": "fade-reveal",
+      "tags": ["split", "reveal", "dramatic", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "mask-slide",
+      "name": "Mask Slide",
+      "description": "A colored bar slides across, revealing text behind it",
+      "category": "text-animations",
+      "subcategory": "fade-reveal",
+      "tags": ["mask", "slide", "reveal", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "gradient-wave",
+      "name": "Gradient Wave Text",
+      "description": "Animated gradient that flows through text like a luminous wave",
+      "category": "text-animations",
+      "subcategory": "color-gradient",
+      "tags": ["gradient", "text", "css-only", "colorful"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "color-cycle",
+      "name": "Color Cycle",
+      "description": "Text smoothly cycles through a spectrum of colors",
+      "category": "text-animations",
+      "subcategory": "color-gradient",
+      "tags": ["color", "cycle", "spectrum", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "neon-glow",
+      "name": "Neon Glow",
+      "description": "Pulsing neon glow effect with animated text-shadow",
+      "category": "text-animations",
+      "subcategory": "color-gradient",
+      "tags": ["neon", "glow", "text-shadow", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "gradient-underline",
+      "name": "Gradient Underline",
+      "description": "Animated gradient underline that sweeps beneath the text",
+      "category": "text-animations",
+      "subcategory": "color-gradient",
+      "tags": ["gradient", "underline", "sweep", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "shimmer",
+      "name": "Shimmer",
+      "description": "A metallic shine sweeps across the text surface",
+      "category": "text-animations",
+      "subcategory": "color-gradient",
+      "tags": ["shimmer", "metallic", "shine", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "text-fill-up",
+      "name": "Text Fill Up",
+      "description": "Text fills with color from bottom to top like liquid rising",
+      "category": "text-animations",
+      "subcategory": "color-gradient",
+      "tags": ["fill", "liquid", "rising", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "glitch-text",
+      "name": "Glitch Text",
+      "description": "Cyberpunk glitch distortion with chromatic aberration",
+      "category": "text-animations",
+      "subcategory": "distortion-glitch",
+      "tags": ["glitch", "cyberpunk", "css-only", "distortion"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "text-scramble",
+      "name": "Text Scramble",
+      "description": "Characters scramble through random symbols before settling",
+      "category": "text-animations",
+      "subcategory": "distortion-glitch",
+      "tags": ["scramble", "random", "decode", "cyberpunk"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "wave-distort",
+      "name": "Wave Distort",
+      "description": "Text characters undulate in a sine-wave motion",
+      "category": "text-animations",
+      "subcategory": "distortion-glitch",
+      "tags": ["wave", "sine", "undulate", "motion"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "flicker",
+      "name": "Flicker",
+      "description": "Text rapidly flickers like a faulty fluorescent light",
+      "category": "text-animations",
+      "subcategory": "distortion-glitch",
+      "tags": ["flicker", "blink", "faulty", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "static-noise",
+      "name": "Static Noise",
+      "description": "Text overlaid with animated TV static noise texture",
+      "category": "text-animations",
+      "subcategory": "distortion-glitch",
+      "tags": ["static", "noise", "tv", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "chromatic-split",
+      "name": "Chromatic Split",
+      "description": "Continuous subtle RGB channel separation that drifts",
+      "category": "text-animations",
+      "subcategory": "distortion-glitch",
+      "tags": ["chromatic", "rgb", "split", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "typewriter-deluxe",
+      "name": "Typewriter Deluxe",
+      "description": "Multi-phrase typewriter with realistic timing and blinking cursor",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["typewriter", "text", "cursor", "animated"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "typewriter-css",
+      "name": "Typewriter CSS",
+      "description": "Pure CSS typewriter with steps animation and cursor",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["typewriter", "css-only", "steps", "cursor"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "text-rotate",
+      "name": "Text Rotate",
+      "description": "Words rotate in vertically, cycling through a list",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["rotate", "cycle", "swap", "vertical"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "letter-shuffle",
+      "name": "Letter Shuffle",
+      "description": "Letters drop in from random positions to form the text",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["shuffle", "drop", "random", "letters"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "count-up-text",
+      "name": "Count Up Text",
+      "description": "Characters flip through the alphabet before landing on correct letter",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["count", "flip", "alphabet", "decode"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "bounce-in-letters",
+      "name": "Bounce In Letters",
+      "description": "Each letter bounces in with elastic easing one by one",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["bounce", "elastic", "letters", "stagger"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "letter-wave",
+      "name": "Letter Wave",
+      "description": "Letters animate up and down in a sequential wave pattern",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["wave", "letters", "stagger", "loop"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "letter-rotate",
+      "name": "Letter Rotate",
+      "description": "Each letter rotates 360 degrees one at a time in sequence",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["rotate", "letters", "stagger", "loop"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "letter-scale",
+      "name": "Letter Scale",
+      "description": "Each letter scales up then back down, rippling through the text",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["scale", "pulse", "letters", "ripple"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "text-decode",
+      "name": "Text Decode",
+      "description": "Text appears as binary then decodes to the real characters",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["decode", "binary", "cyberpunk", "reveal"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "text-morph",
+      "name": "Text Morph",
+      "description": "Text blurs out and morphs into a different phrase",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["morph", "blur", "transition", "swap"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "cursor-trail",
+      "name": "Cursor Trail",
+      "description": "Characters appear with a glowing cursor that leaves a trail",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["cursor", "trail", "glow", "typing"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "spring-letters",
+      "name": "Spring Letters",
+      "description": "Letters spring in from nothing with overshoot bounce",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["spring", "bounce", "overshoot", "letters"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "slide-in-left",
+      "name": "Slide In Left",
+      "description": "Each letter slides in from the left to its position",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["slide", "left", "letters", "stagger"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "slide-in-right",
+      "name": "Slide In Right",
+      "description": "Each letter slides in from the right to its position",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["slide", "right", "letters", "stagger"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "drop-in",
+      "name": "Drop In",
+      "description": "Letters drop in from above with gravity-like easing",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["drop", "gravity", "letters", "entrance"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "flip-letters",
+      "name": "Flip Letters",
+      "description": "Each letter flips in on the Y-axis one at a time",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["flip", "3d", "letters", "stagger"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "pop-in",
+      "name": "Pop In",
+      "description": "Letters pop in from nothing with randomized organic timing",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["pop", "scale", "organic", "letters"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "blur-in-letters",
+      "name": "Blur In Letters",
+      "description": "Each letter unblurs one at a time from left to right",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["blur", "reveal", "letters", "stagger"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "typewriter-reverse",
+      "name": "Typewriter Reverse",
+      "description": "Text deletes character by character then retypes",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["typewriter", "delete", "backspace", "loop"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "matrix-rain",
+      "name": "Matrix Rain",
+      "description": "Characters rain down from above into their correct positions",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["matrix", "rain", "green", "cyberpunk"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "explode-in",
+      "name": "Explode In",
+      "description": "Letters start scattered and converge to form the text",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["explode", "scatter", "converge", "dramatic"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "slot-machine",
+      "name": "Slot Machine",
+      "description": "Characters scroll vertically like slot machine reels",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["slot", "scroll", "reel", "vertical"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "text-stretch",
+      "name": "Text Stretch",
+      "description": "Letters stretch from compressed to full width one by one",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["stretch", "scaleX", "letters", "stagger"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "roll-in",
+      "name": "Roll In",
+      "description": "Each letter rolls in from the left with rotation",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["roll", "rotate", "slide", "letters"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "letter-color-wave",
+      "name": "Letter Color Wave",
+      "description": "A color highlight ripples through each letter sequentially",
+      "category": "text-animations",
+      "subcategory": "typing-character",
+      "tags": ["color", "wave", "highlight", "letters"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "float",
+      "name": "Float",
+      "description": "Text gently floats up and down in a continuous loop",
+      "category": "text-animations",
+      "subcategory": "motion-transform",
+      "tags": ["float", "gentle", "loop", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "rotate-in-3d",
+      "name": "Rotate In 3D",
+      "description": "Text rotates in from behind along the X-axis with perspective",
+      "category": "text-animations",
+      "subcategory": "motion-transform",
+      "tags": ["3d", "rotate", "perspective", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "scale-pulse",
+      "name": "Scale Pulse",
+      "description": "Text smoothly pulses larger and smaller continuously",
+      "category": "text-animations",
+      "subcategory": "motion-transform",
+      "tags": ["scale", "pulse", "breathing", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "rubber-band",
+      "name": "Rubber Band",
+      "description": "Text stretches and snaps like a rubber band on load",
+      "category": "text-animations",
+      "subcategory": "motion-transform",
+      "tags": ["rubber", "stretch", "snap", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "flip-in",
+      "name": "Flip In",
+      "description": "Text flips in from the back like a card being turned over",
+      "category": "text-animations",
+      "subcategory": "motion-transform",
+      "tags": ["flip", "card", "3d", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "swing",
+      "name": "Swing",
+      "description": "Text swings side to side from the top like a hanging sign",
+      "category": "text-animations",
+      "subcategory": "motion-transform",
+      "tags": ["swing", "pendulum", "hanging", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "hover-reveal",
+      "name": "Hover Reveal",
+      "description": "Text appears hidden, revealed with a sliding mask on hover",
+      "category": "text-animations",
+      "subcategory": "hover-interactive",
+      "tags": ["hover", "reveal", "mask", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "hover-glitch",
+      "name": "Hover Glitch",
+      "description": "Text glitches only while hovered, stable otherwise",
+      "category": "text-animations",
+      "subcategory": "hover-interactive",
+      "tags": ["hover", "glitch", "interactive", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "hover-underline-slide",
+      "name": "Hover Underline Slide",
+      "description": "Underline grows from left to right on hover",
+      "category": "text-animations",
+      "subcategory": "hover-interactive",
+      "tags": ["hover", "underline", "slide", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "hover-fill",
+      "name": "Hover Fill",
+      "description": "Text color fills from bottom to top on hover",
+      "category": "text-animations",
+      "subcategory": "hover-interactive",
+      "tags": ["hover", "fill", "color", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "hover-letter-spread",
+      "name": "Hover Letter Spread",
+      "description": "Letters spread apart on hover with increased spacing",
+      "category": "text-animations",
+      "subcategory": "hover-interactive",
+      "tags": ["hover", "spread", "spacing", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "hover-shadow-lift",
+      "name": "Hover Shadow Lift",
+      "description": "Text lifts up with an expanding drop shadow on hover",
+      "category": "text-animations",
+      "subcategory": "hover-interactive",
+      "tags": ["hover", "shadow", "lift", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "particles-drift",
+      "name": "Particles Drift",
+      "description": "Floating particles with proximity-based connecting lines",
+      "category": "backgrounds",
+      "tags": ["particles", "canvas", "ambient", "interactive"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "gradient-mesh",
+      "name": "Gradient Mesh",
+      "description": "Slowly morphing mesh gradient like Stripe and Vercel landing pages",
+      "category": "backgrounds",
+      "tags": ["gradient", "mesh", "css-only", "ambient"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "aurora-glow",
+      "name": "Aurora Glow",
+      "description": "Northern lights effect with shimmering gradient bands",
+      "category": "backgrounds",
+      "tags": ["aurora", "glow", "css-only", "dreamy"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "noise-grain",
+      "name": "Noise Grain",
+      "description": "Subtle animated film grain texture overlay for premium feel",
+      "category": "backgrounds",
+      "tags": ["noise", "grain", "texture", "css-only", "subtle"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "fade-slide-up",
+      "name": "Fade Slide Up",
+      "description": "Elegant staggered fade-and-slide entrance animation",
+      "category": "page-transitions",
+      "tags": ["fade", "slide", "stagger", "entrance"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "curtain-reveal",
+      "name": "Curtain Reveal",
+      "description": "Split-curtain overlay that opens to reveal page content",
+      "category": "page-transitions",
+      "tags": ["curtain", "reveal", "dramatic", "entrance"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "stagger-cards",
+      "name": "Stagger Cards",
+      "description": "Cards animate in one-by-one with cascading delays",
+      "category": "page-transitions",
+      "tags": ["cards", "stagger", "grid", "entrance"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "magnetic-button",
+      "name": "Magnetic Button",
+      "description": "Button that magnetically pulls toward the cursor on hover",
+      "category": "hover-effects",
+      "tags": ["magnetic", "button", "interactive", "cursor"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "glow-border",
+      "name": "Glow Border",
+      "description": "Animated gradient border that traces the card edge on hover",
+      "category": "hover-effects",
+      "tags": ["glow", "border", "gradient", "interactive"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "tilt-card",
+      "name": "Tilt Card",
+      "description": "3D card tilt that follows cursor with light reflection",
+      "category": "hover-effects",
+      "tags": ["3d", "tilt", "perspective", "interactive"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "skeleton-pulse",
+      "name": "Skeleton Pulse",
+      "description": "Shimmer loading placeholders for cards, text, and avatars",
+      "category": "loading-animations",
+      "tags": ["skeleton", "loading", "shimmer", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "spinner-orbit",
+      "name": "Spinner Orbit",
+      "description": "Three dots orbiting in a smooth circular chase",
+      "category": "loading-animations",
+      "tags": ["spinner", "dots", "orbit", "css-only"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": true
+    },
+    {
+      "key": "scroll-reveal",
+      "name": "Scroll Reveal",
+      "description": "Elements animate into view as you scroll down the page",
+      "category": "scroll-effects",
+      "tags": ["scroll", "reveal", "intersection-observer", "entrance"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    },
+    {
+      "key": "parallax-hero",
+      "name": "Parallax Hero",
+      "description": "Background scrolls at a different speed than foreground content",
+      "category": "scroll-effects",
+      "tags": ["parallax", "scroll", "hero", "depth"],
+      "files": ["index.html"],
+      "author": "awesome-ui",
+      "cssOnly": false
+    }
+  ]
+}

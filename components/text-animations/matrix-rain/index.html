@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Rain</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .text {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #e2e8f0;
+            position: relative;
+        }
+        .text span {
+            display: inline-block;
+            opacity: 0;
+            color: #00ff88;
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out, color 0.8s ease 0.4s;
+        }
+        .text span.visible {
+            opacity: 1;
+            transform: translateY(0) !important;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Your text here</div>
+    <script>
+    (function() {
+        var el = document.querySelector('.text');
+        var text = el.textContent;
+        el.innerHTML = '';
+        var offsets = [];
+        for (var i = 0; i < text.length; i++) {
+            var span = document.createElement('span');
+            span.textContent = text[i] === ' ' ? '\u00a0' : text[i];
+            var offset = -(20 + Math.random() * 40);
+            offsets.push(offset);
+            span.style.transform = 'translateY(' + offset + 'px)';
+            el.appendChild(span);
+        }
+        var spans = el.querySelectorAll('span');
+
+        function animate() {
+            spans.forEach(function(s, i) {
+                s.classList.remove('visible');
+                s.style.color = '#00ff88';
+                s.style.transform = 'translateY(' + offsets[i] + 'px)';
+            });
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    spans.forEach(function(s, i) {
+                        setTimeout(function() {
+                            s.classList.add('visible');
+                        }, i * 80 + Math.random() * 60);
+                    });
+                });
+            });
+        }
+
+        animate();
+        setInterval(function() {
+            animate();
+        }, 4000);
+    })();
+    </script>
+</body>
+</html>
