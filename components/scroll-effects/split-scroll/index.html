@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Split Scroll</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 500vh; }
+.container { display: flex; width: 100%; }
+.col { flex: 1; padding: 15px; }
+.block {
+  height: 80px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.col-right { will-change: transform; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="col col-left">
+    <div class="block">Left 1</div><div class="block">Left 2</div><div class="block">Left 3</div>
+    <div class="block">Left 4</div><div class="block">Left 5</div><div class="block">Left 6</div>
+    <div class="block">Left 7</div><div class="block">Left 8</div><div class="block">Left 9</div>
+    <div class="block">Left 10</div>
+  </div>
+  <div class="col col-right" id="rightCol">
+    <div class="block">Right 1</div><div class="block">Right 2</div><div class="block">Right 3</div>
+    <div class="block">Right 4</div><div class="block">Right 5</div><div class="block">Right 6</div>
+    <div class="block">Right 7</div><div class="block">Right 8</div><div class="block">Right 9</div>
+    <div class="block">Right 10</div>
+  </div>
+</div>
+<script>
+const rightCol = document.getElementById('rightCol');
+window.addEventListener('scroll', () => {
+  const offset = window.scrollY * 0.3;
+  rightCol.style.transform = 'translateY(' + offset + 'px)';
+});
+</script>
+</body>
+</html>

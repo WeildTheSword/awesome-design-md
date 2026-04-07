@@ -20,31 +20,61 @@
       "id": "backgrounds",
       "name": "Background Effects",
       "icon": "B",
-      "description": "Ambient canvas effects: particles, gradients, mesh, noise"
+      "description": "Ambient canvas effects: particles, gradients, mesh, noise",
+      "subcategories": [
+        { "id": "gradient-color", "name": "Gradient & Color", "order": 1 },
+        { "id": "particle-canvas", "name": "Particle & Canvas", "order": 2 },
+        { "id": "texture-pattern", "name": "Texture & Pattern", "order": 3 },
+        { "id": "geometric-shape", "name": "Geometric & Shape", "order": 4 }
+      ]
     },
     {
       "id": "page-transitions",
       "name": "Page Transitions",
       "icon": "P",
-      "description": "Full-page enter/exit animations"
+      "description": "Full-page enter/exit animations",
+      "subcategories": [
+        { "id": "fade-slide", "name": "Fade & Slide", "order": 1 },
+        { "id": "reveal-mask", "name": "Reveal & Mask", "order": 2 },
+        { "id": "morph-transform", "name": "Morph & Transform", "order": 3 },
+        { "id": "element-stagger", "name": "Element Stagger", "order": 4 }
+      ]
     },
     {
       "id": "hover-effects",
       "name": "Hover Effects",
       "icon": "H",
-      "description": "Interactive cursor and hover responses"
+      "description": "Interactive cursor and hover responses",
+      "subcategories": [
+        { "id": "button-input", "name": "Button & Input", "order": 1 },
+        { "id": "card-container", "name": "Card & Container", "order": 2 },
+        { "id": "cursor-interactive", "name": "Cursor & Interactive", "order": 3 },
+        { "id": "border-outline", "name": "Border & Outline", "order": 4 }
+      ]
     },
     {
       "id": "loading-animations",
       "name": "Loading Animations",
       "icon": "L",
-      "description": "Spinners, skeletons, progress indicators"
+      "description": "Spinners, skeletons, progress indicators",
+      "subcategories": [
+        { "id": "spinner-circular", "name": "Spinner & Circular", "order": 1 },
+        { "id": "bar-linear", "name": "Bar & Linear", "order": 2 },
+        { "id": "skeleton-placeholder", "name": "Skeleton & Placeholder", "order": 3 },
+        { "id": "dot-bounce", "name": "Dot & Bounce", "order": 4 }
+      ]
     },
     {
       "id": "scroll-effects",
       "name": "Scroll Effects",
       "icon": "S",
-      "description": "Scroll-triggered reveals, parallax, sticky transforms"
+      "description": "Scroll-triggered reveals, parallax, sticky transforms",
+      "subcategories": [
+        { "id": "reveal-entrance", "name": "Reveal & Entrance", "order": 1 },
+        { "id": "parallax-depth", "name": "Parallax & Depth", "order": 2 },
+        { "id": "sticky-pin", "name": "Sticky & Pin", "order": 3 },
+        { "id": "progress-indicator", "name": "Progress & Indicator", "order": 4 }
+      ]
     }
   ],
   "components": [
@@ -664,145 +694,121 @@
       "author": "awesome-ui",
       "cssOnly": true
     },
-    {
-      "key": "particles-drift",
-      "name": "Particles Drift",
-      "description": "Floating particles with proximity-based connecting lines",
-      "category": "backgrounds",
-      "tags": ["particles", "canvas", "ambient", "interactive"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": false
-    },
-    {
-      "key": "gradient-mesh",
-      "name": "Gradient Mesh",
-      "description": "Slowly morphing mesh gradient like Stripe and Vercel landing pages",
-      "category": "backgrounds",
-      "tags": ["gradient", "mesh", "css-only", "ambient"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "aurora-glow",
-      "name": "Aurora Glow",
-      "description": "Northern lights effect with shimmering gradient bands",
-      "category": "backgrounds",
-      "tags": ["aurora", "glow", "css-only", "dreamy"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "noise-grain",
-      "name": "Noise Grain",
-      "description": "Subtle animated film grain texture overlay for premium feel",
-      "category": "backgrounds",
-      "tags": ["noise", "grain", "texture", "css-only", "subtle"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "fade-slide-up",
-      "name": "Fade Slide Up",
-      "description": "Elegant staggered fade-and-slide entrance animation",
-      "category": "page-transitions",
-      "tags": ["fade", "slide", "stagger", "entrance"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "curtain-reveal",
-      "name": "Curtain Reveal",
-      "description": "Split-curtain overlay that opens to reveal page content",
-      "category": "page-transitions",
-      "tags": ["curtain", "reveal", "dramatic", "entrance"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "stagger-cards",
-      "name": "Stagger Cards",
-      "description": "Cards animate in one-by-one with cascading delays",
-      "category": "page-transitions",
-      "tags": ["cards", "stagger", "grid", "entrance"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "magnetic-button",
-      "name": "Magnetic Button",
-      "description": "Button that magnetically pulls toward the cursor on hover",
-      "category": "hover-effects",
-      "tags": ["magnetic", "button", "interactive", "cursor"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": false
-    },
-    {
-      "key": "glow-border",
-      "name": "Glow Border",
-      "description": "Animated gradient border that traces the card edge on hover",
-      "category": "hover-effects",
-      "tags": ["glow", "border", "gradient", "interactive"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "tilt-card",
-      "name": "Tilt Card",
-      "description": "3D card tilt that follows cursor with light reflection",
-      "category": "hover-effects",
-      "tags": ["3d", "tilt", "perspective", "interactive"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": false
-    },
-    {
-      "key": "skeleton-pulse",
-      "name": "Skeleton Pulse",
-      "description": "Shimmer loading placeholders for cards, text, and avatars",
-      "category": "loading-animations",
-      "tags": ["skeleton", "loading", "shimmer", "css-only"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "spinner-orbit",
-      "name": "Spinner Orbit",
-      "description": "Three dots orbiting in a smooth circular chase",
-      "category": "loading-animations",
-      "tags": ["spinner", "dots", "orbit", "css-only"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": true
-    },
-    {
-      "key": "scroll-reveal",
-      "name": "Scroll Reveal",
-      "description": "Elements animate into view as you scroll down the page",
-      "category": "scroll-effects",
-      "tags": ["scroll", "reveal", "intersection-observer", "entrance"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": false
-    },
-    {
-      "key": "parallax-hero",
-      "name": "Parallax Hero",
-      "description": "Background scrolls at a different speed than foreground content",
-      "category": "scroll-effects",
-      "tags": ["parallax", "scroll", "hero", "depth"],
-      "files": ["index.html"],
-      "author": "awesome-ui",
-      "cssOnly": false
-    }
+    {"key":"gradient-mesh","name":"Gradient Mesh","description":"Slowly morphing mesh gradient like Stripe and Vercel landing pages","category":"backgrounds","subcategory":"gradient-color","tags":["gradient","mesh","css-only","ambient"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"aurora-glow","name":"Aurora Glow","description":"Northern lights effect with shimmering gradient bands","category":"backgrounds","subcategory":"gradient-color","tags":["aurora","glow","css-only","dreamy"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"gradient-orbs","name":"Gradient Orbs","description":"Soft blurred color orbs that float and overlap","category":"backgrounds","subcategory":"gradient-color","tags":["orbs","gradient","blur","ambient"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"color-shift","name":"Color Shift","description":"Full-screen background that smoothly transitions between color palettes","category":"backgrounds","subcategory":"gradient-color","tags":["color","shift","palette","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"liquid-gradient","name":"Liquid Gradient","description":"Fluid gradient blobs that merge and separate organically","category":"backgrounds","subcategory":"gradient-color","tags":["liquid","gradient","organic","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"radial-pulse","name":"Radial Pulse","description":"Concentric radial gradients that pulse outward from center","category":"backgrounds","subcategory":"gradient-color","tags":["radial","pulse","concentric","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"particles-drift","name":"Particles Drift","description":"Floating particles with proximity-based connecting lines","category":"backgrounds","subcategory":"particle-canvas","tags":["particles","canvas","ambient","interactive"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"starfield","name":"Starfield","description":"Stars rushing past the viewport in a hyperspace warp effect","category":"backgrounds","subcategory":"particle-canvas","tags":["stars","warp","space","canvas"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"fireflies","name":"Fireflies","description":"Glowing dots that drift and blink like fireflies at dusk","category":"backgrounds","subcategory":"particle-canvas","tags":["fireflies","glow","drift","ambient"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"bubble-rise","name":"Bubble Rise","description":"Translucent bubbles floating upward with gentle wobble","category":"backgrounds","subcategory":"particle-canvas","tags":["bubbles","float","rise","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"snow-fall","name":"Snow Fall","description":"Softly falling snowflakes with rotation and varied sizes","category":"backgrounds","subcategory":"particle-canvas","tags":["snow","fall","winter","ambient"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"constellation","name":"Constellation","description":"Interactive node network that reacts to mouse proximity","category":"backgrounds","subcategory":"particle-canvas","tags":["constellation","nodes","network","interactive"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"noise-grain","name":"Noise Grain","description":"Subtle animated film grain texture overlay for premium feel","category":"backgrounds","subcategory":"texture-pattern","tags":["noise","grain","texture","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"dot-grid","name":"Dot Grid","description":"Repeating dot matrix pattern with subtle animation","category":"backgrounds","subcategory":"texture-pattern","tags":["dots","grid","matrix","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"grid-lines","name":"Grid Lines","description":"Animated perspective grid receding into the distance","category":"backgrounds","subcategory":"texture-pattern","tags":["grid","lines","perspective","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"cross-hatch","name":"Cross Hatch","description":"Animated crosshatch pattern with shifting line angles","category":"backgrounds","subcategory":"texture-pattern","tags":["crosshatch","lines","pattern","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"scanlines","name":"Scanlines","description":"CRT-style horizontal scanline overlay with flicker","category":"backgrounds","subcategory":"texture-pattern","tags":["scanlines","crt","retro","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"topography","name":"Topography","description":"Animated topographic contour line pattern background","category":"backgrounds","subcategory":"texture-pattern","tags":["topography","contour","map","svg"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"floating-shapes","name":"Floating Shapes","description":"Geometric shapes drifting across the viewport with blur","category":"backgrounds","subcategory":"geometric-shape","tags":["shapes","geometric","float","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"wave-layers","name":"Wave Layers","description":"Layered sine waves at the bottom with parallax motion","category":"backgrounds","subcategory":"geometric-shape","tags":["waves","layers","sine","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"hexagon-grid","name":"Hexagon Grid","description":"Honeycomb pattern with subtle glow on random cells","category":"backgrounds","subcategory":"geometric-shape","tags":["hexagon","honeycomb","grid","glow"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"rotating-rings","name":"Rotating Rings","description":"Concentric rings rotating at different speeds","category":"backgrounds","subcategory":"geometric-shape","tags":["rings","rotate","concentric","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"triangle-mosaic","name":"Triangle Mosaic","description":"Animated low-poly triangular mesh with shifting colors","category":"backgrounds","subcategory":"geometric-shape","tags":["triangle","mosaic","lowpoly","canvas"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"bokeh-circles","name":"Bokeh Circles","description":"Soft out-of-focus circles drifting like camera bokeh","category":"backgrounds","subcategory":"geometric-shape","tags":["bokeh","circles","blur","ambient"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+
+    {"key":"fade-slide-up","name":"Fade Slide Up","description":"Elegant staggered fade-and-slide entrance animation","category":"page-transitions","subcategory":"fade-slide","tags":["fade","slide","stagger","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"fade-through","name":"Fade Through","description":"Content fades out then new content fades in with overlap","category":"page-transitions","subcategory":"fade-slide","tags":["fade","crossfade","overlap","transition"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"slide-over","name":"Slide Over","description":"New page slides in from the right over the current page","category":"page-transitions","subcategory":"fade-slide","tags":["slide","overlay","right","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"push-away","name":"Push Away","description":"Current page pushes off-screen as new page enters","category":"page-transitions","subcategory":"fade-slide","tags":["push","slide","exit","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"zoom-fade","name":"Zoom Fade","description":"Page zooms slightly while fading during transition","category":"page-transitions","subcategory":"fade-slide","tags":["zoom","fade","scale","transition"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"curtain-reveal","name":"Curtain Reveal","description":"Split-curtain overlay that opens to reveal page content","category":"page-transitions","subcategory":"reveal-mask","tags":["curtain","reveal","dramatic","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"circle-wipe","name":"Circle Wipe","description":"Circular clip-path expands from center to reveal new page","category":"page-transitions","subcategory":"reveal-mask","tags":["circle","wipe","clip-path","reveal"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"diagonal-wipe","name":"Diagonal Wipe","description":"Diagonal mask sweeps across to reveal page content","category":"page-transitions","subcategory":"reveal-mask","tags":["diagonal","wipe","mask","sweep"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"iris-open","name":"Iris Open","description":"Camera iris-style aperture that opens to reveal content","category":"page-transitions","subcategory":"reveal-mask","tags":["iris","aperture","camera","reveal"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"blinds-reveal","name":"Blinds Reveal","description":"Vertical strips flip open like window blinds","category":"page-transitions","subcategory":"reveal-mask","tags":["blinds","strips","flip","reveal"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"flip-page","name":"Flip Page","description":"Page flips like turning a book page with 3D perspective","category":"page-transitions","subcategory":"morph-transform","tags":["flip","book","3d","page"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"fold-unfold","name":"Fold Unfold","description":"Content folds away then unfolds to reveal new content","category":"page-transitions","subcategory":"morph-transform","tags":["fold","unfold","origami","3d"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"rotate-room","name":"Rotate Room","description":"3D cube-like rotation transitioning between pages","category":"page-transitions","subcategory":"morph-transform","tags":["cube","rotate","3d","room"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"scale-rotate","name":"Scale Rotate","description":"Page scales down and rotates before new page appears","category":"page-transitions","subcategory":"morph-transform","tags":["scale","rotate","shrink","transition"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"swirl-out","name":"Swirl Out","description":"Content swirls away with rotation and scale","category":"page-transitions","subcategory":"morph-transform","tags":["swirl","rotate","scale","exit"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"stagger-cards","name":"Stagger Cards","description":"Cards animate in one-by-one with cascading delays","category":"page-transitions","subcategory":"element-stagger","tags":["cards","stagger","grid","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"stagger-list","name":"Stagger List","description":"List items slide in sequentially from alternating sides","category":"page-transitions","subcategory":"element-stagger","tags":["list","stagger","alternate","slide"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"stagger-grid","name":"Stagger Grid","description":"Grid items appear in a wave pattern from top-left corner","category":"page-transitions","subcategory":"element-stagger","tags":["grid","wave","stagger","cascade"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"hero-sequence","name":"Hero Sequence","description":"Hero elements animate in ordered sequence: bg, title, subtitle, CTA","category":"page-transitions","subcategory":"element-stagger","tags":["hero","sequence","ordered","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"content-blocks","name":"Content Blocks","description":"Content sections reveal in a waterfall cascade on load","category":"page-transitions","subcategory":"element-stagger","tags":["content","waterfall","cascade","reveal"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+
+    {"key":"magnetic-button","name":"Magnetic Button","description":"Button that magnetically pulls toward the cursor on hover","category":"hover-effects","subcategory":"button-input","tags":["magnetic","button","interactive","cursor"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"ripple-click","name":"Ripple Click","description":"Material Design ripple effect expanding from click point","category":"hover-effects","subcategory":"button-input","tags":["ripple","click","material","button"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"fill-slide","name":"Fill Slide","description":"Background color slides in from one edge on hover","category":"hover-effects","subcategory":"button-input","tags":["fill","slide","background","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"button-bounce","name":"Button Bounce","description":"Button scales down then bounces back on press","category":"hover-effects","subcategory":"button-input","tags":["bounce","press","scale","button"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"shine-sweep","name":"Shine Sweep","description":"Diagonal light streak sweeps across the button on hover","category":"hover-effects","subcategory":"button-input","tags":["shine","sweep","light","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"underline-grow","name":"Underline Grow","description":"Underline grows from center outward on hover","category":"hover-effects","subcategory":"button-input","tags":["underline","grow","center","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"tilt-card","name":"Tilt Card","description":"3D card tilt that follows cursor with light reflection","category":"hover-effects","subcategory":"card-container","tags":["3d","tilt","perspective","interactive"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"lift-shadow","name":"Lift Shadow","description":"Card lifts up with expanding shadow on hover","category":"hover-effects","subcategory":"card-container","tags":["lift","shadow","elevation","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"flip-card","name":"Flip Card","description":"Card flips to reveal back content on hover","category":"hover-effects","subcategory":"card-container","tags":["flip","card","3d","reveal"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"glass-morph","name":"Glass Morph","description":"Card transitions to frosted glass effect on hover","category":"hover-effects","subcategory":"card-container","tags":["glass","frosted","blur","morph"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"spotlight-card","name":"Spotlight Card","description":"Radial light follows cursor across the card surface","category":"hover-effects","subcategory":"card-container","tags":["spotlight","radial","cursor","light"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"expand-card","name":"Expand Card","description":"Card smoothly expands to reveal additional content","category":"hover-effects","subcategory":"card-container","tags":["expand","reveal","content","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"cursor-follow","name":"Cursor Follow","description":"Custom cursor element that smoothly follows mouse movement","category":"hover-effects","subcategory":"cursor-interactive","tags":["cursor","follow","custom","smooth"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"trail-dots","name":"Trail Dots","description":"Fading dot trail that follows cursor movement","category":"hover-effects","subcategory":"cursor-interactive","tags":["trail","dots","cursor","fade"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"spotlight-reveal","name":"Spotlight Reveal","description":"Hidden content revealed in a circle around the cursor","category":"hover-effects","subcategory":"cursor-interactive","tags":["spotlight","reveal","circle","cursor"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"distortion-hover","name":"Distortion Hover","description":"Area distorts around the cursor position on hover","category":"hover-effects","subcategory":"cursor-interactive","tags":["distortion","warp","cursor","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"magnetic-grid","name":"Magnetic Grid","description":"Grid of dots that attract toward cursor position","category":"hover-effects","subcategory":"cursor-interactive","tags":["magnetic","grid","dots","attract"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"glow-border","name":"Glow Border","description":"Animated gradient border that traces the card edge on hover","category":"hover-effects","subcategory":"border-outline","tags":["glow","border","gradient","interactive"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"border-trace","name":"Border Trace","description":"Single line traces around the element border on hover","category":"hover-effects","subcategory":"border-outline","tags":["border","trace","line","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"neon-border","name":"Neon Border","description":"Glowing neon border with pulse effect on hover","category":"hover-effects","subcategory":"border-outline","tags":["neon","border","glow","pulse"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"dash-animate","name":"Dash Animate","description":"Dashed border with animated dash movement on hover","category":"hover-effects","subcategory":"border-outline","tags":["dash","border","animate","hover"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"gradient-border-spin","name":"Gradient Border Spin","description":"Conic gradient border that rotates continuously on hover","category":"hover-effects","subcategory":"border-outline","tags":["gradient","border","conic","spin"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+
+    {"key":"spinner-orbit","name":"Spinner Orbit","description":"Three dots orbiting in a smooth circular chase","category":"loading-animations","subcategory":"spinner-circular","tags":["spinner","dots","orbit","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"spinner-ring","name":"Spinner Ring","description":"Classic ring spinner with gradient tail","category":"loading-animations","subcategory":"spinner-circular","tags":["spinner","ring","gradient","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"spinner-dual","name":"Spinner Dual","description":"Two concentric rings spinning in opposite directions","category":"loading-animations","subcategory":"spinner-circular","tags":["spinner","dual","rings","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"spinner-pulse-ring","name":"Spinner Pulse Ring","description":"Ring that pulses outward and fades repeatedly","category":"loading-animations","subcategory":"spinner-circular","tags":["spinner","pulse","ring","fade"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"spinner-arc","name":"Spinner Arc","description":"Partial arc that rotates with varying speed","category":"loading-animations","subcategory":"spinner-circular","tags":["spinner","arc","rotate","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"spinner-clock","name":"Spinner Clock","description":"Clock-hand style indicator sweeping around a circle","category":"loading-animations","subcategory":"spinner-circular","tags":["spinner","clock","sweep","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"progress-bar","name":"Progress Bar","description":"Animated linear progress bar with shimmer effect","category":"loading-animations","subcategory":"bar-linear","tags":["progress","bar","shimmer","linear"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"progress-indeterminate","name":"Progress Indeterminate","description":"Indeterminate progress bar sliding back and forth","category":"loading-animations","subcategory":"bar-linear","tags":["progress","indeterminate","slide","linear"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"loading-bar-top","name":"Loading Bar Top","description":"YouTube/GitHub style loading bar at the top of the page","category":"loading-animations","subcategory":"bar-linear","tags":["loading","bar","top","youtube"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"step-progress","name":"Step Progress","description":"Multi-step progress indicator with animated transitions","category":"loading-animations","subcategory":"bar-linear","tags":["steps","progress","multi","indicator"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"fill-bar","name":"Fill Bar","description":"Bar that fills from left to right with gradient color","category":"loading-animations","subcategory":"bar-linear","tags":["fill","bar","gradient","progress"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"loading-wave-bar","name":"Loading Wave Bar","description":"Horizontal bar with a wave animation running through it","category":"loading-animations","subcategory":"bar-linear","tags":["wave","bar","loading","horizontal"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"skeleton-pulse","name":"Skeleton Pulse","description":"Shimmer loading placeholders for cards, text, and avatars","category":"loading-animations","subcategory":"skeleton-placeholder","tags":["skeleton","loading","shimmer","css-only"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"skeleton-wave","name":"Skeleton Wave","description":"Skeleton screen with a wave highlight sweep effect","category":"loading-animations","subcategory":"skeleton-placeholder","tags":["skeleton","wave","sweep","loading"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"skeleton-card","name":"Skeleton Card","description":"Full card skeleton with image, title, and text areas","category":"loading-animations","subcategory":"skeleton-placeholder","tags":["skeleton","card","placeholder","loading"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"skeleton-table","name":"Skeleton Table","description":"Table layout skeleton with rows and columns","category":"loading-animations","subcategory":"skeleton-placeholder","tags":["skeleton","table","rows","loading"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"content-placeholder","name":"Content Placeholder","description":"Article-style placeholder with heading, paragraphs, and image","category":"loading-animations","subcategory":"skeleton-placeholder","tags":["content","placeholder","article","loading"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"avatar-group-skeleton","name":"Avatar Group Skeleton","description":"Row of circular avatar placeholders with staggered pulse","category":"loading-animations","subcategory":"skeleton-placeholder","tags":["avatar","group","skeleton","pulse"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"dots-bounce","name":"Dots Bounce","description":"Three dots bouncing up and down in sequence","category":"loading-animations","subcategory":"dot-bounce","tags":["dots","bounce","three","sequence"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"dots-fade","name":"Dots Fade","description":"Dots that fade in and out sequentially","category":"loading-animations","subcategory":"dot-bounce","tags":["dots","fade","sequence","opacity"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"dots-scale","name":"Dots Scale","description":"Dots that scale up and down in a wave pattern","category":"loading-animations","subcategory":"dot-bounce","tags":["dots","scale","wave","pulse"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"dots-typing","name":"Dots Typing","description":"Chat-style typing indicator with three animated dots","category":"loading-animations","subcategory":"dot-bounce","tags":["dots","typing","chat","indicator"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"square-spin","name":"Square Spin","description":"Small square that flips and rotates while loading","category":"loading-animations","subcategory":"dot-bounce","tags":["square","spin","flip","rotate"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+    {"key":"hourglass","name":"Hourglass","description":"Hourglass icon that flips when sand runs out","category":"loading-animations","subcategory":"dot-bounce","tags":["hourglass","flip","timer","loading"],"files":["index.html"],"author":"awesome-ui","cssOnly":true},
+
+    {"key":"scroll-reveal","name":"Scroll Reveal","description":"Elements animate into view as you scroll down the page","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","reveal","intersection-observer","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-fade-in","name":"Scroll Fade In","description":"Elements fade in when they enter the viewport","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","fade","viewport","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-slide-left","name":"Scroll Slide Left","description":"Elements slide in from the left on scroll","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","slide","left","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-slide-right","name":"Scroll Slide Right","description":"Elements slide in from the right on scroll","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","slide","right","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-scale-up","name":"Scroll Scale Up","description":"Elements scale from small to full size when scrolled into view","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","scale","grow","entrance"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-rotate-in","name":"Scroll Rotate In","description":"Elements rotate into place as they enter the viewport","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","rotate","entrance","viewport"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-stagger","name":"Scroll Stagger","description":"Group of elements reveal in sequence when section scrolls into view","category":"scroll-effects","subcategory":"reveal-entrance","tags":["scroll","stagger","group","sequence"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"parallax-hero","name":"Parallax Hero","description":"Background scrolls at a different speed than foreground content","category":"scroll-effects","subcategory":"parallax-depth","tags":["parallax","scroll","hero","depth"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"parallax-layers","name":"Parallax Layers","description":"Multiple layers moving at different speeds creating depth","category":"scroll-effects","subcategory":"parallax-depth","tags":["parallax","layers","depth","multi"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"parallax-tilt","name":"Parallax Tilt","description":"Elements tilt based on scroll position for a 3D feel","category":"scroll-effects","subcategory":"parallax-depth","tags":["parallax","tilt","3d","scroll"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"depth-zoom","name":"Depth Zoom","description":"Elements zoom past the camera as you scroll","category":"scroll-effects","subcategory":"parallax-depth","tags":["depth","zoom","scale","scroll"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"parallax-text","name":"Parallax Text","description":"Text moves at a different rate than surrounding content","category":"scroll-effects","subcategory":"parallax-depth","tags":["parallax","text","speed","scroll"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"split-scroll","name":"Split Scroll","description":"Left and right columns scroll at different speeds","category":"scroll-effects","subcategory":"parallax-depth","tags":["split","columns","differential","scroll"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"sticky-header","name":"Sticky Header","description":"Header transforms and shrinks as user scrolls down","category":"scroll-effects","subcategory":"sticky-pin","tags":["sticky","header","shrink","transform"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"sticky-sidebar","name":"Sticky Sidebar","description":"Sidebar sticks and highlights current section on scroll","category":"scroll-effects","subcategory":"sticky-pin","tags":["sticky","sidebar","highlight","navigation"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"pin-and-swap","name":"Pin and Swap","description":"Section pins while inner content swaps with each scroll step","category":"scroll-effects","subcategory":"sticky-pin","tags":["pin","swap","step","sticky"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"horizontal-scroll","name":"Horizontal Scroll","description":"Vertical scroll triggers horizontal movement of panels","category":"scroll-effects","subcategory":"sticky-pin","tags":["horizontal","panels","scroll","sticky"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"sticky-stack","name":"Sticky Stack","description":"Cards stack on top of each other as you scroll down","category":"scroll-effects","subcategory":"sticky-pin","tags":["sticky","stack","cards","layered"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-progress-bar","name":"Scroll Progress Bar","description":"Top-of-page bar that fills to show scroll position","category":"scroll-effects","subcategory":"progress-indicator","tags":["progress","bar","scroll","position"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-percentage","name":"Scroll Percentage","description":"Floating circle showing scroll percentage with progress ring","category":"scroll-effects","subcategory":"progress-indicator","tags":["percentage","circle","ring","scroll"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"section-dots","name":"Section Dots","description":"Fixed navigation dots indicating current scroll section","category":"scroll-effects","subcategory":"progress-indicator","tags":["dots","navigation","section","indicator"],"files":["index.html"],"author":"awesome-ui","cssOnly":false},
+    {"key":"scroll-counter","name":"Scroll Counter","description":"Numbers that count up as you scroll past them","category":"scroll-effects","subcategory":"progress-indicator","tags":["counter","numbers","count","scroll"],"files":["index.html"],"author":"awesome-ui","cssOnly":false}
   ]
 }

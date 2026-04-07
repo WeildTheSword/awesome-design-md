@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floating Shapes</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+.shape {
+  position: absolute;
+  filter: blur(20px);
+  opacity: 0.2;
+}
+.s1 {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff88, #3b82f6);
+  top: 10%; left: 15%;
+  animation: float1 18s ease-in-out infinite alternate;
+}
+.s2 {
+  width: 150px; height: 150px;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  top: 60%; left: 70%;
+  animation: float2 14s ease-in-out infinite alternate;
+}
+.s3 {
+  width: 180px; height: 180px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  top: 30%; left: 55%;
+  animation: float3 20s ease-in-out infinite alternate;
+}
+.s4 {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  top: 75%; left: 20%;
+  animation: float4 16s ease-in-out infinite alternate;
+}
+.s5 {
+  width: 160px; height: 160px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: linear-gradient(135deg, #00ff88, #a855f7);
+  top: 15%; left: 75%;
+  animation: float5 22s ease-in-out infinite alternate;
+}
+.s6 {
+  width: 140px; height: 140px;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  top: 50%; left: 5%;
+  animation: float6 12s ease-in-out infinite alternate;
+}
+.s7 {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  top: 85%; left: 50%;
+  animation: float7 15s ease-in-out infinite alternate;
+}
+.s8 {
+  width: 170px; height: 170px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: linear-gradient(135deg, #00ff88, #06b6d4);
+  top: 40%; left: 35%;
+  animation: float8 19s ease-in-out infinite alternate;
+}
+@keyframes float1 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(80px,60px) rotate(30deg); } }
+@keyframes float2 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-60px,-80px) rotate(-20deg); } }
+@keyframes float3 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-100px,50px) rotate(45deg); } }
+@keyframes float4 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(70px,-90px) rotate(-35deg); } }
+@keyframes float5 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-50px,70px) rotate(25deg); } }
+@keyframes float6 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(90px,40px) rotate(-40deg); } }
+@keyframes float7 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-40px,-60px) rotate(50deg); } }
+@keyframes float8 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(60px,-30px) rotate(-15deg); } }
+</style>
+</head>
+<body>
+<div class="shape s1"></div>
+<div class="shape s2"></div>
+<div class="shape s3"></div>
+<div class="shape s4"></div>
+<div class="shape s5"></div>
+<div class="shape s6"></div>
+<div class="shape s7"></div>
+<div class="shape s8"></div>
+</body>
+</html>

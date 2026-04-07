@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bokeh Circles</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(5px);
+  opacity: 0.3;
+}
+.b1  { width: 45px;  height: 45px;  background: radial-gradient(circle, #00ff88, transparent 70%); top: 10%; left: 5%;   animation: drift-a 20s ease-in-out infinite alternate; }
+.b2  { width: 55px;  height: 55px;  background: radial-gradient(circle, #3b82f6, transparent 70%); top: 25%; left: 80%;  animation: drift-b 16s ease-in-out infinite alternate; }
+.b3  { width: 30px;  height: 30px;  background: radial-gradient(circle, #a855f7, transparent 70%); top: 60%; left: 15%;  animation: drift-c 22s ease-in-out infinite alternate; }
+.b4  { width: 50px;  height: 50px;  background: radial-gradient(circle, #ec4899, transparent 70%); top: 20%; left: 70%;  animation: drift-d 18s ease-in-out infinite alternate; }
+.b5  { width: 25px;  height: 25px;  background: radial-gradient(circle, #06b6d4, transparent 70%); top: 40%; left: 45%;  animation: drift-e 14s ease-in-out infinite alternate; }
+.b6  { width: 40px;  height: 40px;  background: radial-gradient(circle, #f59e0b, transparent 70%); top: 55%; left: 30%;  animation: drift-f 24s ease-in-out infinite alternate; }
+.b7  { width: 20px;  height: 20px;  background: radial-gradient(circle, #00ff88, transparent 70%); top: 5%;  left: 55%;  animation: drift-g 19s ease-in-out infinite alternate; }
+.b8  { width: 60px;  height: 60px;  background: radial-gradient(circle, #3b82f6, transparent 70%); top: 30%; left: 90%;  animation: drift-h 15s ease-in-out infinite alternate; }
+.b9  { width: 35px;  height: 35px;  background: radial-gradient(circle, #a855f7, transparent 70%); top: 15%; left: 25%;  animation: drift-a 21s ease-in-out infinite alternate; }
+.b10 { width: 45px;  height: 45px;  background: radial-gradient(circle, #ec4899, transparent 70%); top: 50%; left: 40%;  animation: drift-b 17s ease-in-out infinite alternate; }
+.b11 { width: 50px;  height: 50px;  background: radial-gradient(circle, #06b6d4, transparent 70%); top: 35%; left: 60%;  animation: drift-c 23s ease-in-out infinite alternate; }
+.b12 { width: 22px;  height: 22px;  background: radial-gradient(circle, #f59e0b, transparent 70%); top: 65%; left: 85%;  animation: drift-d 13s ease-in-out infinite alternate; }
+
+@keyframes drift-a { 0% { transform: translate(0,0); } 100% { transform: translate(60px, 80px); } }
+@keyframes drift-b { 0% { transform: translate(0,0); } 100% { transform: translate(-70px, 50px); } }
+@keyframes drift-c { 0% { transform: translate(0,0); } 100% { transform: translate(50px, -60px); } }
+@keyframes drift-d { 0% { transform: translate(0,0); } 100% { transform: translate(-40px, -70px); } }
+@keyframes drift-e { 0% { transform: translate(0,0); } 100% { transform: translate(80px, 30px); } }
+@keyframes drift-f { 0% { transform: translate(0,0); } 100% { transform: translate(-60px, 40px); } }
+@keyframes drift-g { 0% { transform: translate(0,0); } 100% { transform: translate(30px, 90px); } }
+@keyframes drift-h { 0% { transform: translate(0,0); } 100% { transform: translate(-50px, -50px); } }
+</style>
+</head>
+<body>
+<div class="bokeh b1"></div>
+<div class="bokeh b2"></div>
+<div class="bokeh b3"></div>
+<div class="bokeh b4"></div>
+<div class="bokeh b5"></div>
+<div class="bokeh b6"></div>
+<div class="bokeh b7"></div>
+<div class="bokeh b8"></div>
+<div class="bokeh b9"></div>
+<div class="bokeh b10"></div>
+<div class="bokeh b11"></div>
+<div class="bokeh b12"></div>
+</body>
+</html>

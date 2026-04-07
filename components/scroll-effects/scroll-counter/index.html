@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Counter</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 500vh; padding: 20px; }
+.spacer { height: 80vh; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.counter-row {
+  display: flex;
+  gap: 15px;
+  width: 90%;
+  margin: 40px auto;
+  justify-content: center;
+}
+.counter-box {
+  flex: 1;
+  height: 90px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.counter-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #00ff88;
+}
+.counter-label {
+  font-size: 10px;
+  color: #666;
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+<div class="spacer">Scroll down to see counters</div>
+<div class="counter-row" id="counterRow">
+  <div class="counter-box">
+    <div class="counter-num" data-target="100">0</div>
+    <div class="counter-label">Projects</div>
+  </div>
+  <div class="counter-box">
+    <div class="counter-num" data-target="50">0</div>
+    <div class="counter-label">Clients</div>
+  </div>
+  <div class="counter-box">
+    <div class="counter-num" data-target="75">0</div>
+    <div class="counter-label">Awards</div>
+  </div>
+</div>
+<div class="spacer">End of page</div>
+<script>
+let animated = false;
+const row = document.getElementById('counterRow');
+const nums = row.querySelectorAll('.counter-num');
+
+function animateCount(el, target) {
+  let current = 0;
+  const step = Math.max(1, Math.floor(target / 40));
+  const interval = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(interval); }
+    el.textContent = current;
+  }, 30);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !animated) {
+      animated = true;
+      nums.forEach(n => animateCount(n, parseInt(n.dataset.target)));
+    }
+  });
+}, { threshold: 0.3 });
+observer.observe(row);
+</script>
+</body>
+</html>

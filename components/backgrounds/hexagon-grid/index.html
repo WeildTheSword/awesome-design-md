@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexagon Grid</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+.hex-container {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+}
+.hex {
+  width: 30px;
+  height: 26px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: rgba(255,255,255,0.04);
+  border: none;
+  transition: background 1.2s ease, box-shadow 1.2s ease;
+  flex-shrink: 0;
+}
+.hex.glow {
+  background: rgba(0,255,136,0.15);
+  box-shadow: 0 0 8px rgba(0,255,136,0.3), inset 0 0 4px rgba(0,255,136,0.1);
+}
+</style>
+</head>
+<body>
+<div class="hex-container" id="grid"></div>
+<script>
+const container = document.getElementById('grid');
+const hexW = 30;
+const hexH = 26;
+const cols = Math.ceil(window.innerWidth / (hexW * 0.75)) + 2;
+const rows = Math.ceil(window.innerHeight / hexH) + 2;
+
+container.style.width = (cols * hexW * 0.75 + hexW * 0.25) + 'px';
+container.style.display = 'grid';
+container.style.gridTemplateColumns = `repeat(${cols}, ${hexW * 0.75}px)`;
+container.style.gap = '1px';
+
+const hexes = [];
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+    const hex = document.createElement('div');
+    hex.className = 'hex';
+    if (r % 2 === 1) {
+      hex.style.marginLeft = (hexW * 0.375) + 'px'; // 11.25px for 30px hexagons
+    }
+    container.appendChild(hex);
+    hexes.push(hex);
+  }
+}
+
+function glowRandom() {
+  const count = 4 + Math.floor(Math.random() * 6);
+  for (let i = 0; i < count; i++) {
+    const idx = Math.floor(Math.random() * hexes.length);
+    const hex = hexes[idx];
+    hex.classList.add('glow');
+    setTimeout(() => hex.classList.remove('glow'), 1000 + Math.random() * 1200);
+  }
+}
+
+setInterval(glowRandom, 500);
+glowRandom();
+</script>
+</body>
+</html>

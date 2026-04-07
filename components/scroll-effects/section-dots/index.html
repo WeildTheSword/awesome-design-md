@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section Dots</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+.dots {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+  transition: background 0.3s ease;
+}
+.dot.active { background: #00ff88; }
+.section {
+  min-height: 130vh;
+  padding: 30px 15px;
+}
+.section-box {
+  width: 80%;
+  height: 80px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+<div class="dots">
+  <div class="dot active" data-idx="0"></div>
+  <div class="dot" data-idx="1"></div>
+  <div class="dot" data-idx="2"></div>
+  <div class="dot" data-idx="3"></div>
+</div>
+<div class="section" data-s="0"><div class="section-box">Section 1</div></div>
+<div class="section" data-s="1"><div class="section-box">Section 2</div></div>
+<div class="section" data-s="2"><div class="section-box">Section 3</div></div>
+<div class="section" data-s="3"><div class="section-box">Section 4</div></div>
+<script>
+const dots = document.querySelectorAll('.dot');
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = e.target.dataset.s;
+      dots.forEach(d => d.classList.toggle('active', d.dataset.idx === idx));
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -15,26 +15,22 @@
     background: #0a0a0a;
     color: #e0e0e0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    padding: 8px;
   }
 
   @keyframes rotateBorder {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .glow-card {
     position: relative;
-    width: 360px;
-    border-radius: 16px;
+    width: 160px;
+    border-radius: 10px;
     overflow: hidden;
     padding: 2px;
     background: #222;
@@ -76,88 +72,44 @@
     position: relative;
     z-index: 1;
     background: #111;
-    border-radius: 14px;
-    padding: 40px 32px;
+    border-radius: 8px;
+    padding: 14px 12px;
   }
 
   .card-badge {
     display: inline-block;
-    padding: 6px 14px;
-    font-size: 0.75rem;
+    padding: 3px 8px;
+    font-size: 0.6rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #00ff88;
     background: rgba(0, 255, 136, 0.1);
-    border-radius: 20px;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-bottom: 8px;
   }
 
   .card-title {
-    font-size: 1.4rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
   }
 
   .card-desc {
-    font-size: 0.95rem;
+    font-size: 0.7rem;
     color: #777;
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #3b82f6, #a855f7);
-  }
-
-  .card-meta {
-    font-size: 0.85rem;
-    color: #555;
-  }
-
-  .card-meta strong {
-    color: #ccc;
-    font-weight: 500;
-  }
-
-  .hint {
-    text-align: center;
-    margin-top: 32px;
-    color: #444;
-    font-size: 0.85rem;
-  }
-
-  .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    line-height: 1.4;
   }
 </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="glow-card">
-      <div class="card-inner">
-        <div class="card-badge">Featured</div>
-        <div class="card-title">Animated Glow Border</div>
-        <div class="card-desc">Hover over this card to see a rotating gradient trace around the border, creating a vivid neon glow effect.</div>
-        <div class="card-footer">
-          <div class="avatar"></div>
-          <div class="card-meta"><strong>Design System</strong> &middot; UI Component</div>
-        </div>
-      </div>
+  <div class="glow-card">
+    <div class="card-inner">
+      <div class="card-badge">Featured</div>
+      <div class="card-title">Glow Border</div>
+      <div class="card-desc">Hover for rotating gradient glow</div>
     </div>
-    <div class="hint">Hover the card to activate the glow</div>
   </div>
 </body>
 </html>

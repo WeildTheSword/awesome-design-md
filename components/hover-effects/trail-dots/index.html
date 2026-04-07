@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trail Dots</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; overflow: hidden; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ff88;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.label {
+  color: #555;
+  font-size: 0.85rem;
+}
+</style>
+</head>
+<body>
+<div class="label">Move your mouse</div>
+<script>
+const NUM = 10;
+const dots = [];
+const positions = [];
+const cx = window.innerWidth / 2;
+const cy = window.innerHeight / 2;
+const radius = 60;
+let angle = 0;
+let hasMouse = false;
+let mouseX = cx, mouseY = cy;
+
+for (let i = 0; i < NUM; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dot.style.opacity = 1 - i * 0.08;
+  document.body.appendChild(dot);
+  dots.push(dot);
+  positions.push({ x: cx, y: cy });
+}
+
+document.addEventListener('mousemove', (e) => {
+  hasMouse = true;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animate() {
+  let leadX, leadY;
+  if (hasMouse) {
+    leadX = mouseX;
+    leadY = mouseY;
+  } else {
+    angle += 0.025;
+    leadX = cx + Math.cos(angle) * radius;
+    leadY = cy + Math.sin(angle) * radius;
+  }
+
+  positions[0].x += (leadX - positions[0].x) * 0.15;
+  positions[0].y += (leadY - positions[0].y) * 0.15;
+
+  for (let i = 1; i < NUM; i++) {
+    positions[i].x += (positions[i-1].x - positions[i].x) * 0.15;
+    positions[i].y += (positions[i-1].y - positions[i].y) * 0.15;
+  }
+
+  for (let i = 0; i < NUM; i++) {
+    dots[i].style.left = positions[i].x + 'px';
+    dots[i].style.top = positions[i].y + 'px';
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>

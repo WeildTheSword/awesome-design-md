@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallax Layers</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 500vh; padding: 20px; }
+.layer {
+  width: 70%;
+  height: 80px;
+  border-radius: 8px;
+  margin: 60px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  position: relative;
+  border: 1px solid #222;
+}
+.layer--back { background: #111; }
+.layer--mid { background: #161622; }
+.layer--front { background: #1a1a2e; }
+</style>
+</head>
+<body>
+<div class="layer layer--back" data-speed="0.2">Back Layer</div>
+<div class="layer layer--mid" data-speed="0.5">Mid Layer</div>
+<div class="layer layer--front" data-speed="0.8">Front Layer</div>
+<div class="layer layer--back" data-speed="0.2">Back Layer</div>
+<div class="layer layer--mid" data-speed="0.5">Mid Layer</div>
+<div class="layer layer--front" data-speed="0.8">Front Layer</div>
+<div class="layer layer--back" data-speed="0.2">Back Layer</div>
+<div class="layer layer--mid" data-speed="0.5">Mid Layer</div>
+<div class="layer layer--front" data-speed="0.8">Front Layer</div>
+<script>
+const layers = document.querySelectorAll('.layer');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  layers.forEach(l => {
+    const speed = parseFloat(l.dataset.speed);
+    l.style.transform = 'translateY(' + (scrollY * (speed - 0.5) * 0.3) + 'px)';
+  });
+});
+</script>
+</body>
+</html>

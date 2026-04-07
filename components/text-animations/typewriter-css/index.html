@@ -35,12 +35,14 @@
       overflow: hidden;
       white-space: nowrap;
       border-right: 3px solid #e2e8f0;
-      animation: typing 1.4s steps(14) forwards, blink 0.7s step-end infinite;
+      animation: typewriter 4s steps(14) infinite, blink 0.7s step-end infinite;
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 14ch; }
+    @keyframes typewriter {
+      0%   { width: 0; }
+      35%  { width: 14ch; }
+      65%  { width: 14ch; }
+      100% { width: 0; }
     }
 
     @keyframes blink {

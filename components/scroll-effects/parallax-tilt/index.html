@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallax Tilt</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 500vh; padding: 20px; perspective: 600px; }
+.card {
+  width: 80%;
+  height: 100px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  margin: 100px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: transform 0.1s linear;
+}
+</style>
+</head>
+<body>
+<div class="card">Tilt Card 1</div>
+<div class="card">Tilt Card 2</div>
+<div class="card">Tilt Card 3</div>
+<div class="card">Tilt Card 4</div>
+<div class="card">Tilt Card 5</div>
+<div class="card">Tilt Card 6</div>
+<script>
+const cards = document.querySelectorAll('.card');
+window.addEventListener('scroll', () => {
+  const vh = window.innerHeight;
+  const center = vh / 2;
+  cards.forEach(c => {
+    const rect = c.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const offset = (cardCenter - center) / center;
+    const angle = Math.max(-15, Math.min(15, offset * 15));
+    c.style.transform = 'rotateX(' + angle + 'deg)';
+  });
+});
+</script>
+</body>
+</html>

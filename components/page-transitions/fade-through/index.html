@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fade Through</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; background: #0a0a0a; overflow: hidden; }
+
+.page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page h1 {
+  color: #e2e8f0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.page-one {
+  background: #0a0a0a;
+  animation: fadeOne 4s ease-in-out infinite;
+}
+
+.page-two {
+  background: #111;
+  animation: fadeTwo 4s ease-in-out infinite;
+}
+
+@keyframes fadeOne {
+  0%, 40% { opacity: 1; }
+  50%, 90% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeTwo {
+  0%, 40% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page page-two"><h1>Page Two</h1></div>
+<div class="page page-one"><h1>Page One</h1></div>
+</body>
+</html>

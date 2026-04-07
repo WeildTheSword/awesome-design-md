@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross Hatch</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+.hatch {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.hatch::before,
+.hatch::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+}
+.hatch::before {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.04) 18px,
+    rgba(255,255,255,0.04) 19px
+  );
+  animation: shiftA 15s linear infinite;
+}
+.hatch::after {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.04) 18px,
+    rgba(255,255,255,0.04) 19px
+  );
+  animation: shiftB 12s linear infinite;
+}
+@keyframes shiftA {
+  0% { background-position: 0 0; }
+  100% { background-position: 27px 27px; }
+}
+@keyframes shiftB {
+  0% { background-position: 0 0; }
+  100% { background-position: -27px 27px; }
+}
+</style>
+</head>
+<body>
+<div class="hatch"></div>
+</body>
+</html>

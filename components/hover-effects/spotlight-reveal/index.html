@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotlight Reveal</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; overflow: hidden; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+.container {
+  position: relative;
+  width: 300px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  color: #00ff88;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  pointer-events: none;
+  --mx: 50%;
+  --my: 50%;
+  -webkit-mask-image: radial-gradient(circle 50px at var(--mx) var(--my), transparent 0%, black 100%);
+  mask-image: radial-gradient(circle 50px at var(--mx) var(--my), transparent 0%, black 100%);
+  animation: spotlightReveal 3s ease-in-out infinite;
+}
+
+@property --mx {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 50%;
+}
+
+@property --my {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 50%;
+}
+
+@keyframes spotlightReveal {
+  0% { --mx: 10%; --my: 50%; }
+  25% { --mx: 50%; --my: 30%; }
+  50% { --mx: 90%; --my: 50%; }
+  75% { --mx: 50%; --my: 70%; }
+  100% { --mx: 10%; --my: 50%; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="text">Secret Message</div>
+  <div class="overlay" id="overlay"></div>
+</div>
+<script>
+const overlay = document.getElementById('overlay');
+const container = overlay.parentElement;
+
+container.addEventListener('mousemove', (e) => {
+  const rect = container.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  overlay.style.setProperty('--mx', x + '%');
+  overlay.style.setProperty('--my', y + '%');
+  overlay.style.animationPlayState = 'paused';
+});
+
+container.addEventListener('mouseleave', () => {
+  overlay.style.animationPlayState = 'running';
+});
+</script>
+</body>
+</html>

@@ -46,25 +46,33 @@
             el.appendChild(span);
         }
         var spans = el.querySelectorAll('span');
-        var current = 0;
         var highlightDuration = 150;
+        var timer = null;
 
         function wave() {
-            if (current > 0) {
-                spans[current - 1].classList.remove('highlight');
+            var current = 0;
+            if (timer) clearInterval(timer);
+            // Reset all highlights
+            for (var j = 0; j < spans.length; j++) {
+                spans[j].classList.remove('highlight');
             }
-            if (current < spans.length) {
-                spans[current].classList.add('highlight');
-                current++;
-                setTimeout(wave, highlightDuration);
-            } else {
-                spans[spans.length - 1].classList.remove('highlight');
-                current = 0;
-                setTimeout(wave, 600);
+            function step() {
+                if (current > 0) {
+                    spans[current - 1].classList.remove('highlight');
+                }
+                if (current < spans.length) {
+                    spans[current].classList.add('highlight');
+                    current++;
+                    setTimeout(step, highlightDuration);
+                } else {
+                    spans[spans.length - 1].classList.remove('highlight');
+                }
             }
+            step();
         }
 
         wave();
+        setInterval(wave, 4000);
     })();
     </script>
 </body>

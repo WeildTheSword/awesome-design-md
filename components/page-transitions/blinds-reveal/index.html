@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blinds Reveal</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; background: #0a0a0a; overflow: hidden; }
+
+.page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page h1 {
+  color: #e2e8f0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.page-one {
+  background: #0a0a0a;
+}
+
+.page-two {
+  background: #111;
+}
+
+.blinds {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  z-index: 2;
+}
+
+.blind {
+  flex: 1;
+  background: #0a0a0a;
+  animation: blindReveal 4s ease-in-out infinite;
+}
+
+.blind:nth-child(1) { animation-delay: 0s; }
+.blind:nth-child(2) { animation-delay: 0.1s; }
+.blind:nth-child(3) { animation-delay: 0.2s; }
+.blind:nth-child(4) { animation-delay: 0.3s; }
+.blind:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes blindReveal {
+  0%, 10% { transform: scaleX(1); }
+  35%, 65% { transform: scaleX(0); }
+  90%, 100% { transform: scaleX(1); }
+}
+</style>
+</head>
+<body>
+<div class="page page-two"><h1>Page Two</h1></div>
+<div class="blinds">
+  <div class="blind"></div>
+  <div class="blind"></div>
+  <div class="blind"></div>
+  <div class="blind"></div>
+  <div class="blind"></div>
+</div>
+<div class="page page-one" style="z-index:1; animation: fadePage 4s ease-in-out infinite;">
+  <h1>Page One</h1>
+</div>
+<style>
+@keyframes fadePage {
+  0%, 10% { opacity: 1; }
+  35%, 65% { opacity: 0; }
+  90%, 100% { opacity: 1; }
+}
+</style>
+</body>
+</html>

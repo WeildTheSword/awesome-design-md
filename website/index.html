@@ -699,12 +699,539 @@
     .toast.visible {
       transform: translateX(-50%) translateY(0);
     }
+
+    /* ─── FILTER COUNT ─── */
+    .filter-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 100px;
+      background: var(--surface-3);
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-left: 0.35rem;
+    }
+
+    .filter-btn.active .filter-count {
+      background: rgba(0, 255, 136, 0.25);
+      color: var(--accent);
+    }
+
+    /* ─── CARD ACTIONS ─── */
+    .card-actions {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .card-action-btn {
+      flex: 1;
+      padding: 0.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .card-action-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .card-action-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .card-action-btn.fav-btn.active {
+      color: #f43f5e;
+      border-color: rgba(244, 63, 94, 0.3);
+    }
+
+    .card-action-btn.fav-btn.active svg {
+      fill: #f43f5e;
+    }
+
+    /* ─── TAGS ─── */
+    .card-tags {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.1rem 0.4rem;
+      border-radius: 100px;
+      font-size: 0.55rem;
+      background: var(--surface-3);
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tag:hover {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .modal-tab {
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-tab.active {
+      background: var(--accent-dim);
+      border-color: rgba(0, 255, 136, 0.3);
+      color: var(--accent);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
+
+    .modal-body pre {
+      padding: 1.25rem;
+      overflow: auto;
+      max-height: 500px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      white-space: pre;
+      display: none;
+    }
+
+    .modal-footer {
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-cmd {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .modal-cmd .cmd-key { color: var(--accent); }
+
+    .modal-copy-btn {
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--accent);
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-copy-btn:hover {
+      background: rgba(0, 255, 136, 0.25);
+    }
+
+    /* ─── BACK TO TOP ─── */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      z-index: 90;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .back-to-top svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ─── KEYBOARD HINT ─── */
+    .search-input-wrap {
+      position: relative;
+    }
+
+    .kbd-hint {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+
+    /* ─── SORT & TOOLBAR ─── */
+    .grid-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .toolbar-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .toolbar-btn {
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toolbar-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .toolbar-btn.active {
+      background: var(--accent-dim);
+      border-color: rgba(0, 255, 136, 0.3);
+      color: var(--accent);
+    }
+
+    .toolbar-btn.fav-filter.has-favs {
+      border-color: rgba(244, 63, 94, 0.3);
+      color: #f43f5e;
+    }
+
+    .toolbar-btn.fav-filter.has-favs.active {
+      background: rgba(244, 63, 94, 0.15);
+    }
+
+    .toolbar-separator {
+      width: 1px;
+      height: 16px;
+      background: var(--border);
+    }
+
+    /* ─── CATEGORY BANNER ─── */
+    .category-banner {
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .category-info h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .category-info p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* ─── CARD ENTRANCE ─── */
+    .card {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: cardIn 0.4s ease-out forwards;
+    }
+
+    @keyframes cardIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── HERO STATS ─── */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      animation: fadeSlideUp 0.8s ease-out 0.5s both;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 0.3rem;
+    }
+
+    /* ─── MODAL CODE TOOLBAR ─── */
+    .code-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+      display: none;
+    }
+
+    .code-toolbar.active {
+      display: flex;
+    }
+
+    .code-toolbar-btn {
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .code-toolbar-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .code-toolbar-btn svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* ─── VIEW TOGGLE ─── */
+    .view-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-left: auto;
+    }
+
+    .view-toggle-btn {
+      padding: 0.3rem 0.5rem;
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .view-toggle-btn.active {
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .view-toggle-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ─── LIST VIEW ─── */
+    .grid.list-view {
+      grid-template-columns: 1fr !important;
+      gap: 0.75rem;
+    }
+
+    .grid.list-view .card {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .grid.list-view .card-preview {
+      width: 200px;
+      height: 80px;
+      flex-shrink: 0;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+    }
+
+    .grid.list-view .card-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .grid.list-view .card-badges { margin-bottom: 0; }
+    .grid.list-view .card-desc { display: none; }
+    .grid.list-view .card-tags { display: none; }
+    .grid.list-view .card-actions { display: none; }
+    .grid.list-view .card-name { white-space: nowrap; }
+    .grid.list-view .card-command { margin-top: 0; }
+
+    .grid.list-view .subcategory-header {
+      padding: 1rem 0 0.25rem;
+    }
   </style>
 </head>
 <body>
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge"><span></span> 70 components and counting</div>
+    <div class="hero-badge"><span></span> 168 components and counting</div>
     <h1 class="hero-title">
       <span class="gradient-text">awesome-ui</span>
     </h1>
@@ -733,6 +1260,20 @@
         </div>
       </div>
     </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-components">0</div>
+        <div class="hero-stat-label">Components</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-categories">0</div>
+        <div class="hero-stat-label">Categories</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" id="stat-css">0</div>
+        <div class="hero-stat-label">CSS Only</div>
+      </div>
+    </div>
   </section>
 
   <!-- STICKY NAV -->
@@ -740,8 +1281,9 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">awesome-ui</a>
       <div class="nav-filters" id="filters"></div>
-      <div class="nav-search">
+      <div class="nav-search search-input-wrap">
         <input type="text" class="search-input" id="search" placeholder="Search effects..." autocomplete="off">
+        <span class="kbd-hint">/</span>
       </div>
     </div>
   </nav>
@@ -756,6 +1298,25 @@
     <div class="grid-header">
       <h2 class="grid-title" id="grid-title">All Components</h2>
       <span class="grid-count" id="grid-count"></span>
+    </div>
+    <div id="category-banner"></div>
+    <div class="grid-toolbar" id="grid-toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">Sort</span>
+        <button class="toolbar-btn active" data-sort="default" onclick="setSort('default')">Default</button>
+        <button class="toolbar-btn" data-sort="name" onclick="setSort('name')">A-Z</button>
+        <button class="toolbar-btn" data-sort="css" onclick="setSort('css')">CSS First</button>
+      </div>
+      <div class="toolbar-separator"></div>
+      <button class="toolbar-btn fav-filter" id="fav-filter-btn" data-sort="favs" onclick="toggleFavFilter()">Favorites</button>
+      <div class="view-toggle">
+        <button class="view-toggle-btn active" onclick="setView('grid')" title="Grid view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </button>
+        <button class="view-toggle-btn" onclick="setView('list')" title="List view">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+      </div>
     </div>
     <div class="grid" id="grid"></div>
   </section>
@@ -795,6 +1356,50 @@
     </div>
   </footer>
 
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modal-title"></span>
+        <div class="modal-tabs">
+          <button class="modal-tab active" data-tab="preview" onclick="switchModalTab('preview')">Preview</button>
+          <button class="modal-tab" data-tab="code" onclick="switchModalTab('code')">Source</button>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="code-toolbar" id="code-toolbar">
+        <button class="code-toolbar-btn" onclick="copySourceCode()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Code
+        </button>
+        <button class="code-toolbar-btn" onclick="downloadSource()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="modal-iframe" sandbox="allow-scripts"></iframe>
+        <pre id="modal-code"></pre>
+      </div>
+      <div class="modal-footer">
+        <span class="modal-cmd" id="modal-cmd"></span>
+        <button class="modal-copy-btn" id="modal-copy-btn">Copy Command</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
   <!-- TOAST -->
   <div class="toast" id="toast">Copied to clipboard!</div>
 
@@ -806,6 +1411,10 @@
     let registry = null;
     let activeCategory = 'all';
     let searchQuery = '';
+    let favorites = JSON.parse(localStorage.getItem('awesome-ui-favs') || '[]');
+    let currentSort = 'default';
+    let showFavsOnly = false;
+    let currentView = 'grid';
 
     // ─── INIT ───
     async function init() {
@@ -830,6 +1439,8 @@
       renderFilters();
       renderGrid();
       bindEvents();
+      animateStats();
+      handleHash();
     }
 
     // ─── FILTERS ───
@@ -837,12 +1448,16 @@
       const container = document.getElementById('filters');
       const cats = [{ id: 'all', name: 'All' }, ...registry.categories];
 
-      container.innerHTML = cats.map(cat => `
-        <button class="filter-btn ${cat.id === activeCategory ? 'active' : ''}"
-                data-category="${cat.id}">
-          ${cat.name}
-        </button>
-      `).join('');
+      container.innerHTML = cats.map(cat => {
+        const cnt = cat.id === 'all'
+          ? registry.components.length
+          : registry.components.filter(c => c.category === cat.id).length;
+        return `
+          <button class="filter-btn ${cat.id === activeCategory ? 'active' : ''}"
+                  data-category="${cat.id}">
+            ${cat.name}<span class="filter-count">${cnt}</span>
+          </button>`;
+      }).join('');
     }
 
     // ─── CARD RENDERER ───
@@ -850,10 +1465,14 @@
       const iframeSrc = `${COMPONENTS_BASE}/${comp.category}/${comp.key}/index.html`;
       const cmd = `npx awesome-ui fetch ${comp.key}`;
       const catLabel = registry.categories.find(c => c.id === comp.category)?.name || comp.category;
+      const isFav = favorites.includes(comp.key);
+      const tags = comp.tags.slice(0, 3).map(t =>
+        `<span class="tag" onclick="searchByTag('${t}')">${t}</span>`
+      ).join('');
 
       return `
         <div class="card" data-key="${comp.key}">
-          <div class="card-preview">
+          <div class="card-preview" onclick="openModal('${comp.key}')" style="cursor:pointer">
             <div class="loading-placeholder">Loading preview...</div>
             <iframe
               data-src="${iframeSrc}"
@@ -869,6 +1488,7 @@
             </div>
             <div class="card-name">${comp.name}</div>
             <div class="card-desc">${comp.description}</div>
+            <div class="card-tags">${tags}</div>
             <div class="card-command" onclick="copyCommand('${cmd}', this)">
               <code><span class="cmd-prefix">$ </span>npx awesome-ui fetch <span class="cmd-key">${comp.key}</span></code>
               <button class="copy-btn" aria-label="Copy command">
@@ -879,6 +1499,19 @@
                 <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
+              </button>
+            </div>
+            <div class="card-actions">
+              <button class="card-action-btn" onclick="openModal('${comp.key}')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                Expand
+              </button>
+              <button class="card-action-btn" onclick="openModal('${comp.key}', 'code')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Source
+              </button>
+              <button class="card-action-btn fav-btn ${isFav ? 'active' : ''}" onclick="toggleFav('${comp.key}', this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               </button>
             </div>
           </div>
@@ -893,10 +1526,14 @@
 
       let components = registry.components;
 
+      // Find active category object
+      const cat = activeCategory !== 'all'
+        ? registry.categories.find(c => c.id === activeCategory)
+        : null;
+
       // Filter by category
       if (activeCategory !== 'all') {
         components = components.filter(c => c.category === activeCategory);
-        const cat = registry.categories.find(c => c.id === activeCategory);
         title.textContent = cat ? cat.name : 'Components';
       } else {
         title.textContent = 'All Components';
@@ -913,11 +1550,47 @@
         );
       }
 
+      // Filter favorites
+      if (showFavsOnly) {
+        components = components.filter(c => favorites.includes(c.key));
+      }
+
+      // Sort
+      if (currentSort === 'name') {
+        components = [...components].sort((a, b) => a.name.localeCompare(b.name));
+      } else if (currentSort === 'css') {
+        components = [...components].sort((a, b) => (b.cssOnly ? 1 : 0) - (a.cssOnly ? 1 : 0));
+      }
+
       count.textContent = `${components.length} effect${components.length !== 1 ? 's' : ''}`;
 
-      // Use 4-column layout when showing only text-animations
-      const allTextAnim = components.length > 0 && components.every(c => c.category === 'text-animations');
-      grid.classList.toggle('grid-4col', allTextAnim);
+      // Update fav filter button
+      const favBtn = document.getElementById('fav-filter-btn');
+      favBtn.classList.toggle('has-favs', favorites.length > 0);
+      favBtn.classList.toggle('active', showFavsOnly);
+      favBtn.textContent = `Favorites${favorites.length ? ' (' + favorites.length + ')' : ''}`;
+
+      // Category banner
+      const bannerEl = document.getElementById('category-banner');
+      if (cat) {
+        bannerEl.innerHTML = `<div class="category-banner">
+          <div class="category-icon">${cat.icon}</div>
+          <div class="category-info">
+            <h3>${cat.name}</h3>
+            <p>${cat.description}</p>
+          </div>
+        </div>`;
+      } else {
+        bannerEl.innerHTML = '';
+      }
+
+      // View toggle
+      const gridEl = document.getElementById('grid');
+      gridEl.classList.toggle('list-view', currentView === 'list');
+
+      // Use 4-column layout for categories with many components
+      const singleCategory = components.length > 0 && components.every(c => c.category === components[0].category);
+      grid.classList.toggle('grid-4col', singleCategory && components.length > 12);
 
       if (components.length === 0) {
         grid.innerHTML = `
@@ -929,8 +1602,7 @@
       }
 
       // Check if we should group by subcategory
-      const cat = registry.categories.find(c => c.id === activeCategory);
-      const hasSubcategories = allTextAnim && cat && cat.subcategories && !searchQuery;
+      const hasSubcategories = cat && cat.subcategories && !searchQuery;
 
       if (hasSubcategories) {
         const subcats = cat.subcategories.sort((a, b) => a.order - b.order);
@@ -942,6 +1614,11 @@
       } else {
         grid.innerHTML = components.map(comp => renderCard(comp)).join('');
       }
+
+      // Stagger card entrance
+      document.querySelectorAll('.card').forEach((card, i) => {
+        card.style.animationDelay = `${Math.min(i * 0.03, 0.6)}s`;
+      });
 
       // Lazy load iframes with IntersectionObserver
       observeIframes();
@@ -1009,6 +1686,216 @@
       toast.classList.add('visible');
       setTimeout(() => toast.classList.remove('visible'), 2000);
     }
+
+    // ─── MODAL ───
+    let currentModalKey = null;
+
+    function openModal(key, tab) {
+      const comp = registry.components.find(c => c.key === key);
+      if (!comp) return;
+      currentModalKey = key;
+
+      const iframeSrc = `${COMPONENTS_BASE}/${comp.category}/${comp.key}/index.html`;
+      const cmd = `npx awesome-ui fetch ${comp.key}`;
+
+      document.getElementById('modal-title').textContent = comp.name;
+      document.getElementById('modal-cmd').innerHTML = `<span class="cmd-prefix">$ </span>npx awesome-ui fetch <span class="cmd-key">${comp.key}</span>`;
+      document.getElementById('modal-copy-btn').onclick = () => {
+        navigator.clipboard.writeText(cmd);
+        showToast();
+      };
+
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src = iframeSrc;
+
+      // Fetch source code
+      fetch(iframeSrc).then(r => r.text()).then(code => {
+        document.getElementById('modal-code').textContent = code;
+      }).catch(() => {
+        document.getElementById('modal-code').textContent = '// Failed to load source';
+      });
+
+      switchModalTab(tab || 'preview');
+      document.getElementById('modal-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('active');
+      document.getElementById('modal-iframe').src = '';
+      document.body.style.overflow = '';
+      currentModalKey = null;
+    }
+
+    function switchModalTab(tab) {
+      const iframe = document.getElementById('modal-iframe');
+      const code = document.getElementById('modal-code');
+      document.querySelectorAll('.modal-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+
+      if (tab === 'preview') {
+        iframe.style.display = 'block';
+        code.style.display = 'none';
+      } else {
+        iframe.style.display = 'none';
+        code.style.display = 'block';
+      }
+    }
+
+    // ─── FAVORITES ───
+    function toggleFav(key, btn) {
+      const idx = favorites.indexOf(key);
+      if (idx === -1) {
+        favorites.push(key);
+        btn.classList.add('active');
+      } else {
+        favorites.splice(idx, 1);
+        btn.classList.remove('active');
+      }
+      localStorage.setItem('awesome-ui-favs', JSON.stringify(favorites));
+      event.stopPropagation();
+    }
+
+    // ─── TAG SEARCH ───
+    function searchByTag(tag) {
+      searchQuery = tag;
+      document.getElementById('search').value = tag;
+      document.getElementById('search-mobile').value = tag;
+      activeCategory = 'all';
+      renderFilters();
+      renderGrid();
+      document.getElementById('nav').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ─── KEYBOARD SHORTCUTS ───
+    document.addEventListener('keydown', (e) => {
+      // "/" to focus search
+      if (e.key === '/' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+        e.preventDefault();
+        document.getElementById('search').focus();
+      }
+      // Esc to close modal or blur search
+      if (e.key === 'Escape') {
+        if (document.getElementById('modal-overlay').classList.contains('active')) {
+          closeModal();
+        } else if (document.activeElement.tagName === 'INPUT') {
+          document.activeElement.blur();
+        }
+      }
+    });
+
+    // Hide kbd hint when search is focused
+    document.addEventListener('focusin', (e) => {
+      const hint = document.querySelector('.kbd-hint');
+      if (hint) hint.style.display = e.target.id === 'search' ? 'none' : '';
+    });
+    document.addEventListener('focusout', (e) => {
+      const hint = document.querySelector('.kbd-hint');
+      if (hint && e.target.id === 'search') hint.style.display = '';
+    });
+
+    // ─── BACK TO TOP ───
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
+
+    // ─── CLOSE MODAL ON OVERLAY CLICK ───
+    document.getElementById('modal-overlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // ─── SORTING ───
+    function setSort(sort) {
+      currentSort = sort;
+      document.querySelectorAll('.toolbar-btn[data-sort]').forEach(b => {
+        if (b.dataset.sort !== 'favs') b.classList.toggle('active', b.dataset.sort === sort);
+      });
+      renderGrid();
+    }
+
+    // ─── FAVORITES FILTER ───
+    function toggleFavFilter() {
+      showFavsOnly = !showFavsOnly;
+      renderGrid();
+    }
+
+    // ─── VIEW TOGGLE ───
+    function setView(view) {
+      currentView = view;
+      document.querySelectorAll('.view-toggle-btn').forEach((b, i) => {
+        b.classList.toggle('active', (i === 0 && view === 'grid') || (i === 1 && view === 'list'));
+      });
+      renderGrid();
+    }
+
+    // ─── HERO STATS ANIMATION ───
+    function animateStats() {
+      const total = registry.components.length;
+      const cats = registry.categories.length;
+      const css = registry.components.filter(c => c.cssOnly).length;
+      animateCounter('stat-components', total);
+      animateCounter('stat-categories', cats);
+      animateCounter('stat-css', css);
+    }
+
+    function animateCounter(id, target) {
+      const el = document.getElementById(id);
+      let current = 0;
+      const step = Math.max(1, Math.floor(target / 40));
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(interval);
+        }
+        el.textContent = current;
+      }, 30);
+    }
+
+    // ─── URL HASH ROUTING ───
+    function handleHash() {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+      const comp = registry.components.find(c => c.key === hash);
+      if (comp) {
+        openModal(comp.key);
+      } else {
+        const cat = registry.categories.find(c => c.id === hash);
+        if (cat) {
+          activeCategory = hash;
+          renderFilters();
+          renderGrid();
+          document.getElementById('nav').scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    window.addEventListener('hashchange', handleHash);
+
+    // ─── MODAL CODE COPY / DOWNLOAD ───
+    function copySourceCode() {
+      const code = document.getElementById('modal-code').textContent;
+      navigator.clipboard.writeText(code);
+      showToast();
+    }
+
+    function downloadSource() {
+      const code = document.getElementById('modal-code').textContent;
+      const blob = new Blob([code], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${currentModalKey || 'component'}.html`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ─── UPDATE MODAL TAB TO SHOW/HIDE CODE TOOLBAR ───
+    const origSwitchTab = switchModalTab;
+    switchModalTab = function(tab) {
+      origSwitchTab(tab);
+      document.getElementById('code-toolbar').classList.toggle('active', tab === 'code');
+    };
 
     // ─── GO ───
     init();

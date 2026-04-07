@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Depth Zoom</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 500vh; padding: 20px; }
+.item {
+  width: 70%;
+  height: 80px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  margin: 100px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: transform 0.1s linear;
+}
+</style>
+</head>
+<body>
+<div class="item">Zoom 1</div>
+<div class="item">Zoom 2</div>
+<div class="item">Zoom 3</div>
+<div class="item">Zoom 4</div>
+<div class="item">Zoom 5</div>
+<div class="item">Zoom 6</div>
+<script>
+const items = document.querySelectorAll('.item');
+window.addEventListener('scroll', () => {
+  const vh = window.innerHeight;
+  const center = vh / 2;
+  items.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const elCenter = rect.top + rect.height / 2;
+    const dist = Math.abs(elCenter - center) / center;
+    const scale = 1 + (1 - Math.min(dist, 1)) * 0.3;
+    el.style.transform = 'scale(' + scale + ')';
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Border</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; overflow: hidden; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+.card {
+  width: 200px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #111;
+  border: 1px solid #00ff88;
+  color: #e2e8f0;
+  animation: neonPulse 3s ease-in-out infinite;
+}
+
+.card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.card p { font-size: 0.8rem; color: #888; }
+
+.card:hover {
+  box-shadow: 0 0 5px #00ff88, 0 0 15px #00ff88, 0 0 30px #00ff88;
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 2px rgba(0,255,136,0.2), 0 0 5px rgba(0,255,136,0.1); }
+  50% { box-shadow: 0 0 5px #00ff88, 0 0 15px #00ff88, 0 0 30px #00ff88, 0 0 50px rgba(0,255,136,0.3); }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h3>Neon Glow</h3>
+  <p>Pulsing neon border</p>
+</div>
+</body>
+</html>

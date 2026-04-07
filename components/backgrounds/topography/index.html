@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topography</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+svg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; }
+</style>
+</head>
+<body>
+<svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+const svg = document.getElementById('svg');
+const w = window.innerWidth;
+const h = window.innerHeight;
+svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+const colors = ['#1a3a2a', '#2a2a3a', '#1a2a3a', '#2a3a2a', '#252535'];
+const lines = [];
+
+for (let i = 0; i < 25; i++) {
+  const cy = 50 + (h - 100) * (i / 25) + (Math.random() - 0.5) * 30;
+  let d = `M -20 ${cy}`;
+  const segments = 12;
+  const segW = (w + 40) / segments;
+  for (let j = 1; j <= segments; j++) {
+    const x = -20 + j * segW;
+    const y = cy + (Math.random() - 0.5) * 60;
+    const cpx1 = -20 + (j - 0.5) * segW;
+    const cpy1 = cy + (Math.random() - 0.5) * 40;
+    d += ` Q ${cpx1} ${cpy1} ${x} ${y}`;
+  }
+
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', d);
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', colors[i % colors.length]);
+  path.setAttribute('stroke-width', '1');
+  path.setAttribute('opacity', '0.5');
+  svg.appendChild(path);
+
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  path.style.animation = `drawLine ${8 + Math.random() * 6}s linear infinite`;
+  path.style.animationDelay = `${i * 0.3}s`;
+  lines.push(path);
+}
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes drawLine {
+    0% { stroke-dashoffset: var(--len); }
+    50% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: calc(-1 * var(--len)); }
+  }
+`;
+document.head.appendChild(style);
+
+lines.forEach(p => {
+  const len = p.getTotalLength();
+  p.style.setProperty('--len', len + 'px');
+  p.style.strokeDasharray = len;
+  p.style.strokeDashoffset = len;
+  p.style.animation = `drawLine ${8 + Math.random() * 6}s linear infinite`;
+});
+</script>
+</body>
+</html>

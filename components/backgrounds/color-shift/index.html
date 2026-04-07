@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Shift</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  min-height: 100vh;
+  background: #0a0a0a;
+  overflow: hidden;
+  animation: colorShift 10s ease-in-out infinite;
+}
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.overlay-1 {
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,255,136,0.08) 0%, transparent 60%);
+  animation: pulseOverlay1 8s ease-in-out infinite alternate;
+}
+.overlay-2 {
+  background: radial-gradient(ellipse at 80% 50%, rgba(168,85,247,0.08) 0%, transparent 60%);
+  animation: pulseOverlay2 6s ease-in-out infinite alternate;
+}
+@keyframes colorShift {
+  0%, 100% { background-color: #0d1117; }
+  16% { background-color: #1a0a2e; }
+  33% { background-color: #0a2540; }
+  50% { background-color: #2a1a0a; }
+  66% { background-color: #0a2a1a; }
+  83% { background-color: #2a0a2a; }
+}
+@keyframes pulseOverlay1 {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+@keyframes pulseOverlay2 {
+  0% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+</style>
+</head>
+<body>
+<div class="overlay overlay-1"></div>
+<div class="overlay overlay-2"></div>
+</body>
+</html>

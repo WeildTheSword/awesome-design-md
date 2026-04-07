@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sticky Sidebar</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+.layout { display: flex; min-height: 500vh; }
+.sidebar {
+  width: 40px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+  transition: background 0.3s ease;
+}
+.dot.active { background: #00ff88; }
+.main { margin-left: 40px; flex: 1; padding: 15px; }
+.section {
+  min-height: 120vh;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+.section-box {
+  width: 100%;
+  height: 80px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="dot active" data-index="0"></div>
+  <div class="dot" data-index="1"></div>
+  <div class="dot" data-index="2"></div>
+  <div class="dot" data-index="3"></div>
+</div>
+<div class="main">
+  <div class="section" data-section="0"><div class="section-box">Section 1</div></div>
+  <div class="section" data-section="1"><div class="section-box">Section 2</div></div>
+  <div class="section" data-section="2"><div class="section-box">Section 3</div></div>
+  <div class="section" data-section="3"><div class="section-box">Section 4</div></div>
+</div>
+<script>
+const dots = document.querySelectorAll('.dot');
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = e.target.dataset.section;
+      dots.forEach(d => d.classList.toggle('active', d.dataset.index === idx));
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

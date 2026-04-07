@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Sequence</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; background: #0a0a0a; overflow: hidden; }
+
+.container {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.bg-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleX(0);
+  width: 80%;
+  height: 70%;
+  background: #1a1a2e;
+  border-radius: 8px;
+  animation: bgScale 4s ease-out infinite;
+}
+
+.title {
+  color: #e2e8f0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeSlideUp 4s ease-out infinite;
+  animation-delay: 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.75rem;
+  opacity: 0;
+  animation: fadeSlideUp 4s ease-out infinite;
+  animation-delay: 0.6s;
+  position: relative;
+  z-index: 1;
+}
+
+.button {
+  width: 80px;
+  height: 16px;
+  background: #6366f1;
+  border-radius: 8px;
+  opacity: 0;
+  animation: buttonPop 4s ease-out infinite;
+  animation-delay: 0.9s;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bgScale {
+  0% { transform: translate(-50%, -50%) scaleX(0); }
+  15%, 70% { transform: translate(-50%, -50%) scaleX(1); }
+  90%, 100% { transform: translate(-50%, -50%) scaleX(0); }
+}
+
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  15%, 70% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes buttonPop {
+  0% { opacity: 0; transform: scale(0.5); }
+  15%, 70% { opacity: 1; transform: scale(1); }
+  90%, 100% { opacity: 0; transform: scale(0.5); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="bg-bar"></div>
+  <div class="title">Page One</div>
+  <div class="subtitle">Subtitle text here</div>
+  <div class="button"></div>
+</div>
+</body>
+</html>

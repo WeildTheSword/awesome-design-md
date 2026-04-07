@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Stagger</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 400vh; padding: 20px; }
+.group {
+  display: flex;
+  gap: 10px;
+  width: 90%;
+  margin: 80px auto;
+}
+.group .box {
+  flex: 1;
+  height: 100px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.group.visible .box:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+.group.visible .box:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+.group.visible .box:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+<div class="group"><div class="box">A1</div><div class="box">A2</div><div class="box">A3</div></div>
+<div class="group"><div class="box">B1</div><div class="box">B2</div><div class="box">B3</div></div>
+<div class="group"><div class="box">C1</div><div class="box">C2</div><div class="box">C3</div></div>
+<div class="group"><div class="box">D1</div><div class="box">D2</div><div class="box">D3</div></div>
+<div class="group"><div class="box">E1</div><div class="box">E2</div><div class="box">E3</div></div>
+<div class="group"><div class="box">F1</div><div class="box">F2</div><div class="box">F3</div></div>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.2 });
+document.querySelectorAll('.group').forEach(g => observer.observe(g));
+</script>
+</body>
+</html>

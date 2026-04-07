@@ -15,9 +15,8 @@
     background: #0a0a0a;
     color: #e0e0e0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     perspective: 1000px;
@@ -25,11 +24,11 @@
 
   .tilt-card {
     position: relative;
-    width: 360px;
+    width: 150px;
     background: #111;
     border: 1px solid #222;
-    border-radius: 16px;
-    padding: 44px 36px;
+    border-radius: 10px;
+    padding: 14px 12px;
     transform-style: preserve-3d;
     transition: transform 0.15s ease-out, box-shadow 0.3s ease;
     will-change: transform;
@@ -43,7 +42,7 @@
   .light-overlay {
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: 10px;
     background: radial-gradient(
       circle at 50% 50%,
       rgba(255, 255, 255, 0.06) 0%,
@@ -59,21 +58,20 @@
   }
 
   .card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
     background: linear-gradient(135deg, #00ff88, #3b82f6);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
-    font-size: 1.4rem;
+    margin-bottom: 8px;
     transform: translateZ(30px);
   }
 
   .card-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 14px;
+    height: 14px;
     fill: none;
     stroke: #fff;
     stroke-width: 2;
@@ -82,36 +80,22 @@
   }
 
   .card-title {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 10px;
     transform: translateZ(20px);
-  }
-
-  .card-desc {
-    font-size: 0.95rem;
-    color: #777;
-    line-height: 1.6;
-    transform: translateZ(10px);
   }
 
   .card-tag {
     display: inline-block;
-    margin-top: 24px;
-    padding: 8px 16px;
-    font-size: 0.8rem;
+    margin-top: 8px;
+    padding: 3px 8px;
+    font-size: 0.6rem;
     font-weight: 500;
     color: #3b82f6;
     background: rgba(59, 130, 246, 0.1);
-    border-radius: 8px;
+    border-radius: 5px;
     transform: translateZ(15px);
-  }
-
-  .hint {
-    margin-top: 32px;
-    color: #444;
-    font-size: 0.85rem;
   }
 </style>
 </head>
@@ -125,11 +109,9 @@
         <path d="M2 12l10 5 10-5"/>
       </svg>
     </div>
-    <div class="card-title">Interactive 3D Card</div>
-    <div class="card-desc">This card follows your cursor with a subtle 3D tilt effect and dynamic light reflection for a premium feel.</div>
-    <div class="card-tag">Perspective Transform</div>
+    <div class="card-title">3D Tilt Card</div>
+    <div class="card-tag">Perspective</div>
   </div>
-  <div class="hint">Hover and move your cursor over the card</div>
 
   <script>
     const card = document.getElementById('tiltCard');

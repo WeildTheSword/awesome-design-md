@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Underline Grow</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; overflow: hidden; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+.link {
+  position: relative;
+  color: #e2e8f0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 4px;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background: #00ff88;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  animation: underlineGrow 3s ease infinite;
+}
+
+.link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+@keyframes underlineGrow {
+  0%, 35% { transform: translateX(-50%) scaleX(0); }
+  45%, 75% { transform: translateX(-50%) scaleX(1); }
+  85%, 100% { transform: translateX(-50%) scaleX(0); }
+}
+</style>
+</head>
+<body>
+<a class="link" href="#">Hover Me</a>
+</body>
+</html>

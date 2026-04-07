@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotating Rings</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+.ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  border-style: solid;
+}
+.ring-1 {
+  width: 300px; height: 300px;
+  margin: -150px 0 0 -150px;
+  border-width: 1px;
+  border-color: rgba(0,255,136,0.2) transparent rgba(0,255,136,0.2) transparent;
+  animation: spin1 12s linear infinite;
+}
+.ring-2 {
+  width: 450px; height: 450px;
+  margin: -225px 0 0 -225px;
+  border-width: 1px;
+  border-color: transparent rgba(59,130,246,0.2) transparent rgba(59,130,246,0.2);
+  animation: spin2 18s linear infinite;
+}
+.ring-3 {
+  width: 600px; height: 600px;
+  margin: -300px 0 0 -300px;
+  border-width: 1px;
+  border-color: rgba(168,85,247,0.15) transparent rgba(168,85,247,0.15) transparent;
+  animation: spin3 25s linear infinite;
+}
+.ring-4 {
+  width: 750px; height: 750px;
+  margin: -375px 0 0 -375px;
+  border-width: 1px;
+  border-color: transparent rgba(236,72,153,0.1) transparent rgba(236,72,153,0.1);
+  animation: spin4 30s linear infinite;
+}
+@keyframes spin1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes spin2 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+@keyframes spin3 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes spin4 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+</style>
+</head>
+<body>
+<div class="ring ring-1"></div>
+<div class="ring ring-2"></div>
+<div class="ring ring-3"></div>
+<div class="ring ring-4"></div>
+</body>
+</html>

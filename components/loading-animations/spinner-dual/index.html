@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinner Dual</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { min-height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; overflow: hidden; }
+
+    .spinner-dual {
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }
+
+    .spinner-dual .outer {
+      position: absolute;
+      inset: 0;
+      border: 3px solid transparent;
+      border-top-color: #00ff88;
+      border-bottom-color: #00ff88;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .spinner-dual .inner {
+      position: absolute;
+      inset: 10px;
+      border: 3px solid transparent;
+      border-left-color: #e2e8f0;
+      border-right-color: #e2e8f0;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="spinner-dual">
+    <div class="outer"></div>
+    <div class="inner"></div>
+  </div>
+</body>
+</html>

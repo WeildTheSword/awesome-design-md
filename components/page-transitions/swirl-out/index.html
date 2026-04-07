@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swirl Out</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; background: #0a0a0a; overflow: hidden; }
+
+.page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page h1 {
+  color: #e2e8f0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.page-one {
+  background: #0a0a0a;
+  animation: swirlOut 4s ease-in-out infinite;
+}
+
+.page-two {
+  background: #111;
+  animation: swirlIn 4s ease-in-out infinite;
+}
+
+@keyframes swirlOut {
+  0%, 15% { transform: scale(1) rotate(0deg); opacity: 1; }
+  40%, 60% { transform: scale(0) rotate(360deg); opacity: 0; }
+  85%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes swirlIn {
+  0%, 15% { opacity: 0; }
+  40%, 60% { opacity: 1; }
+  85%, 100% { opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page page-two"><h1>Page Two</h1></div>
+<div class="page page-one"><h1>Page One</h1></div>
+</body>
+</html>

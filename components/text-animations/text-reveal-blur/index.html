@@ -35,16 +35,14 @@
     opacity: 0;
     filter: blur(12px);
     transform: translateY(16px);
-    animation: reveal 0.8s ease-out forwards;
+    transition: opacity 0.8s ease-out, filter 0.8s ease-out, transform 0.8s ease-out;
     margin: 0 0.15em;
   }
 
-  @keyframes reveal {
-    to {
-      opacity: 1;
-      filter: blur(0);
-      transform: translateY(0);
-    }
+  .reveal .word.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
   }
 </style>
 </head>
@@ -56,13 +54,27 @@
   var text = el.textContent;
   var words = text.split(/\s+/);
   el.textContent = "";
-  words.forEach(function (word, i) {
+  words.forEach(function (word) {
     var span = document.createElement("span");
     span.className = "word";
     span.textContent = word;
-    span.style.animationDelay = (i * 0.18) + "s";
     el.appendChild(span);
   });
+  var spans = el.querySelectorAll('.word');
+
+  function play() {
+    for (var j = 0; j < spans.length; j++) {
+      spans[j].classList.remove('visible');
+    }
+    spans.forEach(function (span, i) {
+      setTimeout(function () {
+        span.classList.add('visible');
+      }, i * 180);
+    });
+  }
+
+  play();
+  setInterval(play, 4000);
 })();
 </script>
 </body>

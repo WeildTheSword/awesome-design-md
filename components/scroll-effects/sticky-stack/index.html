@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sticky Stack</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; min-height: 500vh; padding: 20px; }
+.intro { height: 60vh; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.stack-section { padding-bottom: 200vh; }
+.stack-card {
+  position: sticky;
+  width: 85%;
+  height: 90px;
+  margin: 0 auto 20px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.stack-card:nth-child(1) { top: 20px; background: #111; }
+.stack-card:nth-child(2) { top: 40px; background: #131318; }
+.stack-card:nth-child(3) { top: 60px; background: #151520; }
+.stack-card:nth-child(4) { top: 80px; background: #171728; }
+</style>
+</head>
+<body>
+<div class="intro">Scroll to stack cards</div>
+<div class="stack-section">
+  <div class="stack-card">Card 1</div>
+  <div class="stack-card">Card 2</div>
+  <div class="stack-card">Card 3</div>
+  <div class="stack-card">Card 4</div>
+</div>
+</body>
+</html>

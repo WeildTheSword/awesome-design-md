@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shine Sweep</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { min-height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; overflow: hidden; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+.btn {
+  position: relative;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  background: #111;
+  border: 1px solid #333;
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-25deg);
+  animation: shineSweep 3s ease-in-out infinite;
+}
+
+.btn:hover::after {
+  animation: shineSweepOnce 0.6s ease-in-out forwards;
+}
+
+@keyframes shineSweep {
+  0%, 60% { left: -75%; }
+  80% { left: 150%; }
+  100% { left: 150%; }
+}
+
+@keyframes shineSweepOnce {
+  0% { left: -75%; }
+  100% { left: 150%; }
+}
+</style>
+</head>
+<body>
+<button class="btn">Shine Button</button>
+</body>
+</html>

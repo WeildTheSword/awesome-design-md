@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triangle Mosaic</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let w, h;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+  initGrid();
+}
+
+const palette = ['#0d0d12', '#0f0f18', '#10101a', '#0e0e15', '#111118', '#0c0c14', '#121220'];
+const size = 40;
+let triangles = [];
+
+function initGrid() {
+  triangles = [];
+  const cols = Math.ceil(w / size) + 1;
+  const rows = Math.ceil(h / (size * 0.866)) + 1;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const x = c * size + (r % 2 ? size / 2 : 0);
+      const y = r * size * 0.866;
+      // upper triangle
+      triangles.push({
+        pts: [[x, y], [x + size, y], [x + size / 2, y + size * 0.866]],
+        color: palette[Math.floor(Math.random() * palette.length)],
+        target: null
+      });
+      // lower triangle
+      triangles.push({
+        pts: [[x + size / 2, y], [x + size * 1.5, y], [x + size, y + size * 0.866]],
+        color: palette[Math.floor(Math.random() * palette.length)],
+        target: null
+      });
+    }
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = '#0a0a0a';
+  ctx.fillRect(0, 0, w, h);
+  triangles.forEach(t => {
+    ctx.beginPath();
+    ctx.moveTo(t.pts[0][0], t.pts[0][1]);
+    ctx.lineTo(t.pts[1][0], t.pts[1][1]);
+    ctx.lineTo(t.pts[2][0], t.pts[2][1]);
+    ctx.closePath();
+    ctx.fillStyle = t.color;
+    ctx.fill();
+  });
+}
+
+function shimmer() {
+  const count = 5 + Math.floor(Math.random() * 10);
+  for (let i = 0; i < count; i++) {
+    const idx = Math.floor(Math.random() * triangles.length);
+    const bright = ['#151525', '#18182a', '#1a1a2e', '#161628', '#141422'];
+    triangles[idx].target = bright[Math.floor(Math.random() * bright.length)];
+    setTimeout(() => {
+      triangles[idx].color = triangles[idx].target;
+      triangles[idx].target = null;
+      setTimeout(() => {
+        triangles[idx].color = palette[Math.floor(Math.random() * palette.length)];
+      }, 800);
+    }, Math.random() * 500);
+  }
+}
+
+resize();
+window.addEventListener('resize', resize);
+
+function loop() {
+  draw();
+  requestAnimationFrame(loop);
+}
+loop();
+setInterval(shimmer, 1200);
+</script>
+</body>
+</html>

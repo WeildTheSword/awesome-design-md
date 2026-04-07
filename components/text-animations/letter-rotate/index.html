@@ -25,11 +25,13 @@
         }
         .text span {
             display: inline-block;
-            animation: rotate 3s ease-in-out infinite;
+            opacity: 0;
+            transform: rotateY(90deg);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
-        @keyframes rotate {
-            0%, 15%, 100% { transform: rotate(0deg); }
-            5%, 10% { transform: rotate(360deg); }
+        .text span.active {
+            opacity: 1;
+            transform: rotateY(0deg);
         }
     </style>
 </head>
@@ -43,9 +45,23 @@
         for (var i = 0; i < text.length; i++) {
             var span = document.createElement('span');
             span.textContent = text[i] === ' ' ? '\u00a0' : text[i];
-            span.style.animationDelay = (i * 0.15) + 's';
             el.appendChild(span);
         }
+        var spans = el.querySelectorAll('span');
+
+        function play() {
+            for (var j = 0; j < spans.length; j++) {
+                spans[j].classList.remove('active');
+            }
+            spans.forEach(function(span, i) {
+                setTimeout(function() {
+                    span.classList.add('active');
+                }, i * 150);
+            });
+        }
+
+        play();
+        setInterval(play, 4000);
     })();
     </script>
 </body>

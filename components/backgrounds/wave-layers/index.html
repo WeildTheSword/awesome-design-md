@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Layers</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: #0a0a0a; overflow: hidden; }
+.wave {
+  position: fixed;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+}
+.wave-1 {
+  background: #0f1f2e;
+  border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+  height: 30px;
+  animation: wave1 8s ease-in-out infinite alternate;
+  z-index: 3;
+}
+.wave-2 {
+  background: #152035;
+  border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+  height: 35px;
+  animation: wave2 6s ease-in-out infinite alternate;
+  z-index: 2;
+}
+.wave-3 {
+  background: #1a1530;
+  border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+  height: 40px;
+  animation: wave3 10s ease-in-out infinite alternate;
+  z-index: 1;
+}
+@keyframes wave1 {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(5%) translateY(-15px); }
+}
+@keyframes wave2 {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-3%) translateY(-10px); }
+}
+@keyframes wave3 {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(4%) translateY(-8px); }
+}
+</style>
+</head>
+<body>
+<div class="wave wave-3"></div>
+<div class="wave wave-2"></div>
+<div class="wave wave-1"></div>
+</body>
+</html>
