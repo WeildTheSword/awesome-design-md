@@ -1625,27 +1625,107 @@
     }
 
     // ─── LAZY IFRAMES ───
+    // Only run demos that the user is actually pausing on. A card must dwell
+    // on screen for LOAD_DWELL_MS before its iframe loads — rapid scrolling
+    // past the card cancels the load before it ever happens. When a card
+    // leaves the viewport we swap its iframe to about:blank, which fully
+    // tears down the demo document and stops every animation/timer/RAF it
+    // was running.
+    const LOAD_DWELL_MS = 350;   // how long a card must stay on screen before loading
+    const UNLOAD_DELAY_MS = 500; // grace period after leaving the viewport before unloading
+    let iframeObserver = null;
+    const iframeLoadTimers = new WeakMap();
+    const iframeUnloadTimers = new WeakMap();
+
+    function loadIframe(iframe) {
+      if (iframe.dataset.loaded === 'true') return;
+      const placeholder = iframe.previousElementSibling;
+      iframe.dataset.loaded = 'true';
+      iframe.addEventListener('load', function onLoad() {
+        if (iframe.src && iframe.src !== 'about:blank' && placeholder) {
+          placeholder.style.display = 'none';
+        }
+        iframe.removeEventListener('load', onLoad);
+      });
+      iframe.src = iframe.dataset.src;
+    }
+
+    function unloadIframe(iframe) {
+      if (iframe.dataset.loaded !== 'true') return;
+      iframe.src = 'about:blank';
+      iframe.dataset.loaded = 'false';
+      const placeholder = iframe.previousElementSibling;
+      if (placeholder) placeholder.style.display = '';
+    }
+
+    function cancelPendingLoad(iframe) {
+      const t = iframeLoadTimers.get(iframe);
+      if (t) {
+        clearTimeout(t);
+        iframeLoadTimers.delete(iframe);
+      }
+    }
+
+    function cancelPendingUnload(iframe) {
+      const t = iframeUnloadTimers.get(iframe);
+      if (t) {
+        clearTimeout(t);
+        iframeUnloadTimers.delete(iframe);
+      }
+    }
+
     function observeIframes() {
-      const observer = new IntersectionObserver((entries) => {
+      if (iframeObserver) iframeObserver.disconnect();
+
+      iframeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+          const iframe = entry.target;
+
           if (entry.isIntersecting) {
-            const iframe = entry.target;
-            if (iframe.dataset.src && !iframe.src) {
-              iframe.src = iframe.dataset.src;
-              iframe.addEventListener('load', () => {
-                const placeholder = iframe.previousElementSibling;
-                if (placeholder) placeholder.style.display = 'none';
-              });
+            // Card entered viewport: cancel any pending unload, schedule a
+            // load only after the user dwells on it for LOAD_DWELL_MS.
+            cancelPendingUnload(iframe);
+            if (iframe.dataset.loaded !== 'true' && !iframeLoadTimers.has(iframe)) {
+              iframeLoadTimers.set(iframe, setTimeout(() => {
+                iframeLoadTimers.delete(iframe);
+                loadIframe(iframe);
+              }, LOAD_DWELL_MS));
             }
-            observer.unobserve(iframe);
+          } else {
+            // Card left viewport: cancel any pending load outright (user
+            // scrolled past before dwell completed), and schedule unload
+            // of anything already running.
+            cancelPendingLoad(iframe);
+            if (iframe.dataset.loaded === 'true' && !iframeUnloadTimers.has(iframe)) {
+              iframeUnloadTimers.set(iframe, setTimeout(() => {
+                iframeUnloadTimers.delete(iframe);
+                unloadIframe(iframe);
+              }, UNLOAD_DELAY_MS));
+            }
           }
         });
-      }, { rootMargin: '200px' });
+      }, { rootMargin: '100px' });
 
       document.querySelectorAll('.card-preview iframe[data-src]').forEach(iframe => {
-        observer.observe(iframe);
+        iframeObserver.observe(iframe);
       });
     }
+
+    // Pause all demos when the tab itself is hidden.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        document.querySelectorAll('.card-preview iframe[data-src]').forEach(iframe => {
+          cancelPendingLoad(iframe);
+          cancelPendingUnload(iframe);
+          if (iframe.dataset.loaded === 'true') unloadIframe(iframe);
+        });
+      } else if (iframeObserver) {
+        // Re-observe so visible cards re-enter the dwell/load cycle on return.
+        document.querySelectorAll('.card-preview iframe[data-src]').forEach(iframe => {
+          iframeObserver.observe(iframe);
+        });
+      }
+    });
 
     // ─── EVENTS ───
     function bindEvents() {
