@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glitch Typing</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    overflow: hidden;
+  }
+  .glitch-text {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #e2e8f0;
+    position: relative;
+    min-height: 1.4em;
+  }
+  .glitch-text .char {
+    display: inline-block;
+    position: relative;
+  }
+  .glitch-text .char.glitching {
+    animation: glitchChar 0.15s steps(2) infinite;
+    color: #f472b6;
+    text-shadow:
+      2px 0 #06b6d4,
+      -2px 0 #a78bfa;
+  }
+  .glitch-text .char.settled {
+    color: #e2e8f0;
+    text-shadow: none;
+    animation: none;
+  }
+  .glitch-text .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.15em;
+    background: #f472b6;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 0.5s step-end infinite;
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(244, 114, 182, 0.6);
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  @keyframes glitchChar {
+    0% { transform: translate(0, 0) skewX(0deg); }
+    25% { transform: translate(-2px, 1px) skewX(-5deg); }
+    50% { transform: translate(2px, -1px) skewX(5deg); }
+    75% { transform: translate(-1px, -1px) skewX(-3deg); }
+    100% { transform: translate(0, 0) skewX(0deg); }
+  }
+</style>
+</head>
+<body>
+  <div class="glitch-text">
+    <span id="output"></span><span class="cursor"></span>
+  </div>
+<script>
+(function () {
+  var phrases = ["Your text here"];
+  var output = document.getElementById("output");
+  var phraseIdx = 0;
+  var glitchChars = "!@#$%^&*<>{}[]~`|\\";
+
+  function typePhrase(phrase, cb) {
+    var i = 0;
+    function next() {
+      if (i >= phrase.length) { cb(); return; }
+      var span = document.createElement("span");
+      span.className = "char glitching";
+      span.textContent = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+      output.appendChild(span);
+      var flicks = 3 + Math.floor(Math.random() * 4);
+      var count = 0;
+      var iv = setInterval(function () {
+        span.textContent = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+        count++;
+        if (count >= flicks) {
+          clearInterval(iv);
+          span.textContent = phrase[i] === " " ? "\u00a0" : phrase[i];
+          span.className = "char settled";
+          i++;
+          setTimeout(next, 30 + Math.random() * 50);
+        }
+      }, 40);
+    }
+    next();
+  }
+
+  function deleteAll(cb) {
+    function remove() {
+      var chars = output.querySelectorAll(".char");
+      if (chars.length === 0) { cb(); return; }
+      var last = chars[chars.length - 1];
+      last.className = "char glitching";
+      setTimeout(function () {
+        last.remove();
+        setTimeout(remove, 20 + Math.random() * 30);
+      }, 60);
+    }
+    remove();
+  }
+
+  function loop() {
+    typePhrase(phrases[phraseIdx], function () {
+      setTimeout(function () {
+        deleteAll(function () {
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(loop, 400);
+        });
+      }, 2000);
+    });
+  }
+
+  setTimeout(loop, 500);
+})();
+</script>
+</body>
+</html>

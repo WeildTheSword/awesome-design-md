@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal Command</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    overflow: hidden;
+    padding: 2rem;
+  }
+  .terminal {
+    background: #111318;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    width: min(600px, 90vw);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #0d0f14;
+    border-bottom: 1px solid #1e293b;
+  }
+  .terminal-bar .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .terminal-bar .dot:nth-child(1) { background: #f87171; }
+  .terminal-bar .dot:nth-child(2) { background: #fbbf24; }
+  .terminal-bar .dot:nth-child(3) { background: #34d399; }
+  .terminal-bar .title {
+    margin-left: auto;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: #475569;
+  }
+  .terminal-body {
+    padding: 20px;
+    font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+    line-height: 1.7;
+    color: #cbd5e1;
+    min-height: 200px;
+  }
+  .line {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .line .prompt {
+    color: #34d399;
+    font-weight: 700;
+  }
+  .line .command {
+    color: #e2e8f0;
+  }
+  .line .output {
+    color: #94a3b8;
+  }
+  .line .highlight {
+    color: #a78bfa;
+  }
+  .line .success {
+    color: #34d399;
+  }
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background: #34d399;
+    vertical-align: text-bottom;
+    animation: blink 0.7s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-bar">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="title">bash</span>
+    </div>
+    <div class="terminal-body" id="body"></div>
+  </div>
+<script>
+(function () {
+  var body = document.getElementById("body");
+  var sequences = [
+    {
+      command: "npm install awesome-ui",
+      output: [
+        { text: "added 42 packages in 1.2s", cls: "output" },
+        { text: "✓ Ready to use", cls: "success" }
+      ]
+    },
+    {
+      command: "awesome-ui fetch glitch-typing",
+      output: [
+        { text: "↓ Downloading component...", cls: "output" },
+        { text: "✓ Saved to ./glitch-typing/", cls: "success" }
+      ]
+    },
+    {
+      command: "cat package.json | grep version",
+      output: [
+        { text: '  "version": "2.0.0"', cls: "highlight" }
+      ]
+    }
+  ];
+  var seqIdx = 0;
+
+  function createLine() {
+    var div = document.createElement("div");
+    div.className = "line";
+    body.appendChild(div);
+    return div;
+  }
+
+  function typeText(el, text, cls, speed, cb) {
+    var span = document.createElement("span");
+    span.className = cls;
+    el.appendChild(span);
+    var cursor = document.createElement("span");
+    cursor.className = "cursor";
+    el.appendChild(cursor);
+    var i = 0;
+    function next() {
+      if (i >= text.length) {
+        cursor.remove();
+        if (cb) cb();
+        return;
+      }
+      span.textContent += text[i];
+      i++;
+      setTimeout(next, speed + Math.random() * speed * 0.6);
+    }
+    next();
+  }
+
+  function printLine(el, text, cls, cb) {
+    var span = document.createElement("span");
+    span.className = cls;
+    span.textContent = text;
+    el.appendChild(span);
+    if (cb) setTimeout(cb, 300);
+  }
+
+  function runSequence() {
+    var seq = sequences[seqIdx];
+    var line = createLine();
+    var prompt = document.createElement("span");
+    prompt.className = "prompt";
+    prompt.textContent = "~ $ ";
+    line.appendChild(prompt);
+
+    typeText(line, seq.command, "command", 45, function () {
+      var outIdx = 0;
+      function nextOutput() {
+        if (outIdx >= seq.output.length) {
+          seqIdx = (seqIdx + 1) % sequences.length;
+          if (seqIdx === 0) {
+            setTimeout(function () {
+              body.innerHTML = "";
+              runSequence();
+            }, 2500);
+          } else {
+            setTimeout(runSequence, 600);
+          }
+          return;
+        }
+        setTimeout(function () {
+          var outLine = createLine();
+          printLine(outLine, seq.output[outIdx].text, seq.output[outIdx].cls, function () {
+            outIdx++;
+            nextOutput();
+          });
+        }, 400);
+      }
+      setTimeout(nextOutput, 300);
+    });
+    body.scrollTop = body.scrollHeight;
+  }
+
+  setTimeout(runSequence, 400);
+})();
+</script>
+</body>
+</html>
